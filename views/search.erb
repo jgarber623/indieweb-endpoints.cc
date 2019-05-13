@@ -1,0 +1,8 @@
+<p>Found the following IndieWeb endpoints for <code><%= params[:url] %></code>:</p>
+
+<dl>
+  <% endpoints.each do |name, value| %>
+    <dt><%= name %></dt>
+    <dd><code><%= value || 'nil' %></code></dd>
+  <% end %>
+</dl>
