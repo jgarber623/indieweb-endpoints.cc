@@ -1,10 +1,20 @@
 module IndiewebEndpoints
   class App < Sinatra::Base
     configure do
+      use Rack::Protection, except: [:remote_token, :session_hijacking, :xss_header]
+      use Rack::Protection::ContentSecurityPolicy, default_src: "'self'", frame_ancestors: "'none'"
+      use Rack::Protection::StrictTransport, max_age: 31536000, include_subdomains: true, preload: true
+
       set :root, File.dirname(File.expand_path('..', __dir__))
 
       set :raise_errors, true
       set :show_exceptions, :after_handler
+    end
+
+    configure :production do
+      use Rack::SslEnforcer, redirect_html: false
+      use Rack::HostRedirect, %w[www.indieweb-endpoints.cc] => 'indieweb-endpoints.cc'
+      use Rack::Deflater
     end
 
     register Sinatra::Param
