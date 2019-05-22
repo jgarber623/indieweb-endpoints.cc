@@ -1,8 +1,13 @@
-<p>Found the following IndieWeb endpoints for <code><%= params[:url] %></code>:</p>
+<p>Found the following IndieWeb endpoints for <a href="<%= params[:url] %>"><%= params[:url] %></a>:</p>
 
-<dl>
-  <% endpoints.each do |name, value| %>
-    <dt><%= name %></dt>
-    <dd><code><%= value || 'nil' %></code></dd>
-  <% end %>
-</dl>
+<table>
+  <caption>Table of IndieWeb endpoints for <a href="<%= params[:url] %>"><%= params[:url] %></a>.</caption>
+  <tbody>
+    <% endpoints.each do |name, value| %>
+      <tr>
+        <th scope="row"><%= name %></th>
+        <td><%= value || 'nil' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
