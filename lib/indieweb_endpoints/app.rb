@@ -20,15 +20,17 @@ module IndiewebEndpoints
     register Sinatra::Param
     register Sinatra::RespondWith
 
-    respond_to :html, :json
+    after do
+      message = 'The requested format is not supported'
+
+      halt(406, message) if response.server_error? && response.body.include?('Unknown template engine')
+    end
 
     get '/', provides: :html do
-      cache_control :public
-
       respond_with :index
     end
 
-    get '/search' do
+    get '/search', provides: [:html, :json] do
       url = param :url, required: true, format: uri_regexp, raise: true
 
       endpoints = IndieWeb::Endpoints.get(url).to_h
@@ -41,17 +43,15 @@ module IndiewebEndpoints
     end
 
     error 400 do
-      response = { code: 400, message: 'Parameter url is required and must be a valid URL (e.g. https://example.com)' }
+      message = 'Parameter url is required and must be a valid URL (e.g. https://example.com)'
 
-      respond_with :'400', error: response
+      respond_with :'400', error: { code: 400, message: message }
     end
 
     error 404 do
-      cache_control :public
+      message = 'The requested URL could not be found'
 
-      response = { code: 404, message: 'The requested URL could not be found' }
-
-      respond_with :'404', error: response
+      respond_with :'404', error: { code: 404, message: message }
     end
 
     private

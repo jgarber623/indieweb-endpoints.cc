@@ -3,6 +3,8 @@ describe IndiewebEndpoints::App do
 
   context 'when GET /foo' do
     before do
+      header 'Accept', 'text/html'
+
       get '/foo'
     end
 
