@@ -9,6 +9,10 @@ module IndiewebEndpoints
 
       set :raise_errors, true
       set :show_exceptions, :after_handler
+
+      set :assets_css_compressor, :sass
+      set :assets_paths, %w[assets/stylesheets]
+      set :assets_precompile, %w[application.css]
     end
 
     configure :production do
@@ -17,6 +21,7 @@ module IndiewebEndpoints
       use Rack::Deflater
     end
 
+    register Sinatra::AssetPipeline
     register Sinatra::Param
     register Sinatra::RespondWith
 

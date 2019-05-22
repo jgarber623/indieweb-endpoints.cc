@@ -7,6 +7,7 @@ gem 'rack', '~> 2.0'
 gem 'rack-host-redirect', '~> 1.3'
 gem 'rack-ssl-enforcer', '~> 0.2.9'
 gem 'sinatra', '~> 2.0'
+gem 'sinatra-asset-pipeline', '~> 2.2', require: 'sinatra/asset_pipeline'
 gem 'sinatra-contrib', '~> 2.0'
 gem 'sinatra-param', git: 'https://github.com/jgarber623/sinatra-param', tag: 'v3.1.0'
 
@@ -15,7 +16,7 @@ group :development, :test do
   gem 'rake', '~> 12.3'
   gem 'reek', '~> 5.4'
   gem 'rspec', '~> 3.8'
-  gem 'rubocop', '~> 0.69.0', require: false
+  gem 'rubocop', '~> 0.70.0', require: false
   gem 'rubocop-performance', '~> 1.3', require: false
   gem 'rubocop-rspec', '~> 1.33', require: false
   gem 'webmock', '~> 3.5'
