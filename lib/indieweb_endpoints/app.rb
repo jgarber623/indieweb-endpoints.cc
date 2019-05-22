@@ -20,10 +20,16 @@ module IndiewebEndpoints
     register Sinatra::Param
     register Sinatra::RespondWith
 
+    before do
+      message = 'The requested method is not allowed'
+
+      halt(405, message) unless request.get?
+    end
+
     after do
       message = 'The requested format is not supported'
 
-      halt(406, message) if response.server_error? && response.body.include?('Unknown template engine')
+      halt(406, message) if status == 500 && body.include?('Unknown template engine')
     end
 
     get '/', provides: :html do

@@ -12,7 +12,7 @@ describe IndiewebEndpoints::App do
 
     it 'renders the 406 message' do
       expect(last_response.status).to eq(406)
-      expect(last_response.body).to include(message)
+      expect(last_response.body).to eq(message)
     end
   end
 
@@ -23,7 +23,7 @@ describe IndiewebEndpoints::App do
 
     it 'renders the 406 message' do
       expect(last_response.status).to eq(406)
-      expect(last_response.body).to include(message)
+      expect(last_response.body).to eq(message)
     end
   end
 end
