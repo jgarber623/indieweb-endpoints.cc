@@ -26,6 +26,9 @@ GEM
       ice_nine (~> 0.11.0)
       thread_safe (~> 0.3, >= 0.3.1)
     backports (3.15.0)
+    breakpoint (2.7.1)
+      sass (~> 3.3)
+      sassy-maps (< 1.0.0)
     codeclimate-engine-rb (0.4.1)
       virtus (~> 1.0)
     coercible (1.0.0)
@@ -133,6 +136,8 @@ GEM
     sass-listen (4.0.0)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
+    sassy-maps (0.4.0)
+      sass (~> 3.3)
     shotgun (0.9.2)
       rack (>= 1.0)
     simplecov (0.16.1)
@@ -190,6 +195,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  breakpoint (~> 2.7)
   indieweb-endpoints (~> 0.5.0)
   rack (~> 2.0)
   rack-host-redirect (~> 1.3)

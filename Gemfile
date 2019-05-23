@@ -2,6 +2,7 @@ ruby '2.6.3'
 
 source 'https://rubygems.org'
 
+gem 'breakpoint', '~> 2.7'
 gem 'indieweb-endpoints', '~> 0.5.0'
 gem 'rack', '~> 2.0'
 gem 'rack-host-redirect', '~> 1.3'
