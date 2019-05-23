@@ -1,8 +1,8 @@
-<p>Discover a URL’s IndieAuth, Micropub, Microsub, and Webmention endpoints. Enter a URL into the form below to get started!</p>
+<form action="/search" method="get" role="search">
+  <div class="field">
+    <label for="url">Enter a URL to get started:</label>
+    <input type="url" id="url" name="url" placeholder="https://…" required>
+  </div>
 
-<form method="get" action="/search">
-  <label for="url">URL</label>
-  <input type="url" name="url" id="url" placeholder="https://…" required>
-
-  <button>Submit</button>
+  <button>Search</button>
 </form>

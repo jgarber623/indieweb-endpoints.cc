@@ -1,13 +1,36 @@
-<p>Found the following IndieWeb endpoints for <a href="<%= params[:url] %>"><%= params[:url] %></a>:</p>
+<div class="search-results">
+  <h1>Search Results</h1>
 
-<table>
-  <caption>Table of IndieWeb endpoints for <a href="<%= params[:url] %>"><%= params[:url] %></a>.</caption>
-  <tbody>
-    <% endpoints.each do |name, value| %>
-      <tr>
-        <th scope="row"><%= name %></th>
-        <td><%= value || 'nil' %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <p>Found the following IndieWeb endpoints for <a href="<%= params[:url] %>"><%= params[:url] %></a>:</p>
+
+  <table>
+    <caption>Table of IndieWeb endpoints for <a href="<%= params[:url] %>"><%= params[:url] %></a>.</caption>
+    <tbody>
+      <% endpoints.each do |name, value| %>
+        <tr>
+          <th scope="row"><%= name %></th>
+          <td>
+            <% if value.is_a?(Array) %>
+              <ul>
+                <% value.each do |url| %>
+                  <li><%= url %></li>
+                <% end %>
+              </ul>
+            <% else %>
+              <%= value || "No #{name} endpoint found." %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <h2><abbr title="JavaScript Object Notation">JSON</abbr> Data</h2>
+
+  <figure>
+    <pre><%= JSON.pretty_generate(endpoints) %></pre>
+    <figcaption>
+      IndieWeb endpoints for <a href="<%= params[:url] %>"><%= params[:url] %></a> represented as JSON.
+    </figcaption>
+  </figure>
+</div>
