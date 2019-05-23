@@ -17,7 +17,7 @@ module IndiewebEndpoints
 
     configure :production do
       use Rack::SslEnforcer, redirect_html: false
-      use Rack::HostRedirect, %w[www.indieweb-endpoints.cc] => 'indieweb-endpoints.cc'
+      use Rack::HostRedirect, %w[indieweb-endpoints-cc-web-f6guikqi7q-uc.a.run.app www.indieweb-endpoints.cc] => 'indieweb-endpoints.cc'
       use Rack::Deflater
     end
 
