@@ -1,0 +1,16 @@
+.editorconfig
+.gitignore
+.reek.yml
+.rspec
+.rubocop
+.rubocop.yml
+.ruby-version
+.simplecov
+.travis.yml
+*.md
+/.git/
+/bin/
+/coverage/
+/spec/
+LICENSE
+Makefile
