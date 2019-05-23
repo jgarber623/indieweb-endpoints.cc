@@ -41,6 +41,17 @@ describe IndiewebEndpoints::App do
       end
     end
 
+    context 'when url parameter is invalid' do
+      before do
+        get '/search', url: 'https://example.com<script>'
+      end
+
+      it 'renders the 400 view' do
+        expect(last_response.status).to eq(400)
+        expect(last_response.body).to include(message)
+      end
+    end
+
     context 'when url parameter is valid' do
       before do
         stub_request(:get, example_url).to_return(headers: http_response_headers, body: read_fixture(example_url))

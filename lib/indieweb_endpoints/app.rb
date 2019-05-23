@@ -49,7 +49,7 @@ module IndiewebEndpoints
       respond_with :search, endpoints: endpoints do |format|
         format.json { json endpoints }
       end
-    rescue Sinatra::Param::InvalidParameterError
+    rescue IndieWeb::Endpoints::InvalidURIError, Sinatra::Param::InvalidParameterError
       halt 400
     end
 
