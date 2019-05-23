@@ -6,7 +6,7 @@ describe IndiewebEndpoints::App do
 
     it 'renders the index view' do
       expect(last_response.status).to eq(200)
-      expect(last_response.body).to include('Submit')
+      expect(last_response.body).to include('Enter a URL to get started')
     end
   end
 end
