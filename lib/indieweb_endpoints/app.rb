@@ -42,7 +42,7 @@ module IndiewebEndpoints
     end
 
     get '/search', provides: [:html, :json] do
-      url = param :url, required: true, format: uri_regexp, raise: true
+      url = param :url, required: true, transform: :strip, format: uri_regexp, raise: true
 
       endpoints = IndieWeb::Endpoints.get(url).to_h
 
