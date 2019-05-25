@@ -1,10 +1,10 @@
 <div class="search-results">
   <h1>Search Results</h1>
 
-  <p>Found the following IndieWeb endpoints for <a href="<%= params[:url] %>"><%= params[:url] %></a>:</p>
+  <p>Found the following IndieWeb endpoints for <a href="<%= url %>"><%= url %></a>:</p>
 
   <table>
-    <caption>Table of IndieWeb endpoints for <a href="<%= params[:url] %>"><%= params[:url] %></a>.</caption>
+    <caption>IndieWeb endpoints for <a href="<%= url %>"><%= url %></a> represented as tabular data.</caption>
     <tbody>
       <% endpoints.each do |name, value| %>
         <tr>
@@ -30,7 +30,7 @@
   <figure>
     <pre><%= JSON.pretty_generate(endpoints) %></pre>
     <figcaption>
-      IndieWeb endpoints for <a href="<%= params[:url] %>"><%= params[:url] %></a> represented as JSON.
+      IndieWeb endpoints for <a href="<%= url %>"><%= url %></a> represented as JSON.
     </figcaption>
   </figure>
 </div>

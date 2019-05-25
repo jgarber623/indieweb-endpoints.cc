@@ -46,11 +46,13 @@ module IndiewebEndpoints
 
       endpoints = IndieWeb::Endpoints.get(url).to_h
 
-      respond_with :search, endpoints: endpoints do |format|
+      respond_with :search, endpoints: endpoints, url: url do |format|
         format.json { json endpoints }
       end
     rescue IndieWeb::Endpoints::InvalidURIError, Sinatra::Param::InvalidParameterError
       halt 400
+    rescue IndieWeb::Endpoints::IndieWebEndpointsError
+      halt 408
     end
 
     error 400 do
@@ -63,6 +65,12 @@ module IndiewebEndpoints
       message = 'The requested URL could not be found'
 
       respond_with :'404', error: { code: 404, message: message }
+    end
+
+    error 408 do
+      message = 'The request timed out and could not be completed'
+
+      respond_with :'408', error: { code: 408, message: message }
     end
 
     private
