@@ -1,34 +1,32 @@
-<div class="search-results">
-  <h1>Search Results</h1>
+<h1>Search Results</h1>
 
-  <p>Found the following IndieWeb endpoints for <a href="<%= canonical_url %>"><%= canonical_url %></a>:</p>
+<p>Found the following IndieWeb endpoints for <a href="<%= canonical_url %>"><%= canonical_url %></a>:</p>
 
-  <table>
-    <caption>IndieWeb endpoints for <a href="<%= canonical_url %>"><%= canonical_url %></a> represented as tabular data.</caption>
-    <tbody>
-      <% endpoints.each do |type, value| %>
-        <tr>
-          <th scope="row"><%= type %></th>
-          <td>
-            <% if value.is_a?(Array) %>
-              <ul>
-                <%= value.map { |val| "<li>#{val}</li>" }.join %>
-              </ul>
-            <% else %>
-              <%= value || "No #{type} endpoint found." %>
-            <% end %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+<table class="search-results-table" role="table">
+  <caption>IndieWeb endpoints for <a href="<%= canonical_url %>"><%= canonical_url %></a> represented as tabular data.</caption>
+  <tbody role="rowgroup">
+    <% endpoints.each do |type, value| %>
+      <tr role="row">
+        <th role="rowheader" scope="row"><%= type %></th>
+        <td role="cell">
+          <% if value.is_a?(Array) %>
+            <ul>
+              <%= value.map { |val| "<li>#{val}</li>" }.join %>
+            </ul>
+          <% else %>
+            <%= value || "No #{type} endpoint found." %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
-  <h2><abbr title="JavaScript Object Notation">JSON</abbr> Data</h2>
+<h2><abbr title="JavaScript Object Notation">JSON</abbr> Data</h2>
 
-  <figure>
-    <pre><%= JSON.pretty_generate(endpoints) %></pre>
-    <figcaption>
-      IndieWeb endpoints for <a href="<%= canonical_url %>"><%= canonical_url %></a> represented as JSON.
-    </figcaption>
-  </figure>
-</div>
+<figure class="search-results-data">
+  <pre><%= JSON.pretty_generate(endpoints) %></pre>
+  <figcaption>
+    IndieWeb endpoints for <a href="<%= canonical_url %>"><%= canonical_url %></a> represented as JSON.
+  </figcaption>
+</figure>
