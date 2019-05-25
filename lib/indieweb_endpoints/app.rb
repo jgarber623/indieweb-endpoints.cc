@@ -42,11 +42,12 @@ module IndiewebEndpoints
     end
 
     get '/search', provides: [:html, :json] do
-      url = param :url, required: true, transform: :strip, format: uri_regexp, raise: true
+      param :url, required: true, transform: :strip, format: uri_regexp, raise: true
 
-      endpoints = IndieWeb::Endpoints.get(url).to_h
+      client = IndieWeb::Endpoints.client(params[:url])
+      endpoints = client.endpoints.to_h
 
-      respond_with :search, endpoints: endpoints, url: url do |format|
+      respond_with :search, endpoints: endpoints, canonical_url: client.response.uri do |format|
         format.json { json endpoints }
       end
     rescue IndieWeb::Endpoints::InvalidURIError, Sinatra::Param::InvalidParameterError
