@@ -10,9 +10,8 @@ unless ENV['RACK_ENV'] == 'production'
   require 'rubocop/rake_task'
 
   Reek::Rake::Task.new do |task|
-    task.config_file   = '.reek.yml'
     task.fail_on_error = false
-    task.source_files  = '**/*.rb'
+    task.source_files  = FileList['**/*.rb'].exclude('vendor/**/*.rb')
   end
 
   RSpec::Core::RakeTask.new
