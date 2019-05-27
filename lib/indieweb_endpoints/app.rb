@@ -38,6 +38,8 @@ module IndiewebEndpoints
     end
 
     get '/', provides: :html do
+      cache_control :public
+
       respond_with :index
     end
 
@@ -63,6 +65,8 @@ module IndiewebEndpoints
     end
 
     error 404 do
+      cache_control :public
+
       message = 'The requested URL could not be found'
 
       respond_with :'404', error: { code: 404, message: message }
