@@ -25,7 +25,10 @@
 <h2><abbr title="JavaScript Object Notation">JSON</abbr> Data</h2>
 
 <figure class="search-results-data">
-  <pre><%= JSON.pretty_generate(endpoints) %></pre>
+  <output>
+    <pre><%= JSON.pretty_generate(endpoints) %></pre>
+  </output>
+
   <figcaption>
     IndieWeb endpoints for <a href="<%= canonical_url %>"><%= canonical_url %></a> represented as JSON.
   </figcaption>
