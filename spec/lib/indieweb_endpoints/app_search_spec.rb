@@ -67,10 +67,12 @@ describe IndiewebEndpoints::App do
   end
 
   context 'when GET /search and Accept: application/json' do
+    before do
+      header 'Accept', 'application/json'
+    end
+
     context 'when url parameter is absent' do
       before do
-        header 'Accept', 'application/json'
-
         get '/search'
       end
 
@@ -82,9 +84,18 @@ describe IndiewebEndpoints::App do
 
     context 'when url parameter protocol is invalid' do
       before do
-        header 'Accept', 'application/json'
-
         get '/search', url: 'ftp://example.com'
+      end
+
+      it 'renders the 400 JSON' do
+        expect(last_response.status).to eq(400)
+        expect(last_response.body).to eq({ error: { code: 400, message: message } }.to_json)
+      end
+    end
+
+    context 'when url parameter is invalid' do
+      before do
+        get '/search', url: 'https://example.com<script>'
       end
 
       it 'renders the 400 JSON' do
@@ -96,8 +107,6 @@ describe IndiewebEndpoints::App do
     context 'when url parameter is valid' do
       before do
         stub_request(:get, example_url).to_return(headers: http_response_headers, body: read_fixture(example_url))
-
-        header 'Accept', 'application/json'
 
         get '/search', url: example_url
       end
