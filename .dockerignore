@@ -9,6 +9,7 @@
 .simplecov
 .travis.yml
 *.md
+**/*.DS_Store
 /bin/
 /coverage/
 /spec/

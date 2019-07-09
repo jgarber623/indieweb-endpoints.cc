@@ -1,4 +1,9 @@
-FROM ruby:2.6.3-slim-stretch
+##################################################
+# Build Stage
+##################################################
+FROM ruby:2.6.3-slim-stretch as Build
+
+ENV RACK_ENV production
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
@@ -15,12 +20,26 @@ WORKDIR /usr/src/app
 
 COPY Gemfile Gemfile.lock ./
 
-RUN bundle install --without development test
+RUN bundle install --clean --no-cache --without development test \
+    && rm -rf /usr/local/bundle/cache/*.gem \
+    && find /usr/local/bundle/gems/ -name "*.c" -delete \
+    && find /usr/local/bundle/gems/ -name "*.o" -delete
 
 COPY . .
 
-ENV RACK_ENV production
-
 RUN bundle exec rake assets:precompile
+
+##################################################
+# Final Stage
+##################################################
+FROM ruby:2.6.3-slim-stretch
+
+ENV RACK_ENV production
+ENV EXECJS_RUNTIME Disabled
+
+COPY --from=Build /usr/local/bundle /usr/local/bundle
+COPY --from=Build /usr/src/app /usr/src/app
+
+WORKDIR /usr/src/app
 
 CMD ["bundle", "exec", "rackup", "--port", "8080"]
