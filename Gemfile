@@ -2,8 +2,10 @@ ruby '2.6.3'
 
 source 'https://rubygems.org'
 
+git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
+
 gem 'breakpoint', '~> 2.7'
-gem 'indieweb-endpoints', '~> 0.7.0'
+gem 'indieweb-endpoints', '~> 1.0'
 gem 'rack', '~> 2.0'
 gem 'rack-host-redirect', '~> 1.3'
 gem 'rack-ssl-enforcer', '~> 0.2.9'
@@ -12,7 +14,7 @@ gem 'sass-globbing', '~> 1.1'
 gem 'sinatra', '~> 2.0'
 gem 'sinatra-asset-pipeline', '~> 2.2', require: 'sinatra/asset_pipeline'
 gem 'sinatra-contrib', '~> 2.0'
-gem 'sinatra-param', git: 'https://github.com/jgarber623/sinatra-param', tag: 'v3.1.0'
+gem 'sinatra-param', github: 'jgarber623/sinatra-param', tag: 'v3.1.0'
 
 group :development, :test do
   gem 'rack-test', '~> 1.1'

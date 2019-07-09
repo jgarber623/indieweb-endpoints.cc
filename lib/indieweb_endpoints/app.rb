@@ -44,9 +44,9 @@ module IndiewebEndpoints
     end
 
     get '/search', provides: [:html, :json] do
-      param :url, required: true, transform: :strip, format: uri_regexp, raise: true
+      param :url, required: true, transform: :strip, format: URI.regexp(%w[http https]), raise: true
 
-      client = IndieWeb::Endpoints.client(params[:url])
+      client = IndieWeb::Endpoints::Client.new(params[:url])
       endpoints = client.endpoints.to_h
 
       respond_with :search, endpoints: endpoints, canonical_url: client.response.uri do |format|
@@ -76,12 +76,6 @@ module IndiewebEndpoints
       message = 'The request timed out and could not be completed'
 
       respond_with :'408', error: { code: 408, message: message }
-    end
-
-    private
-
-    def uri_regexp
-      @uri_regexp ||= URI.regexp(%w[http https])
     end
   end
 end
