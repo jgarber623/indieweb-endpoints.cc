@@ -28,7 +28,7 @@ module IndiewebEndpoints
     before do
       message = 'The requested method is not allowed'
 
-      halt(405, message) unless request.get?
+      halt(405, message) unless request.head? || request.get?
     end
 
     after do
