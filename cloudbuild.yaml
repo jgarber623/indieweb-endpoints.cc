@@ -1,0 +1,19 @@
+steps:
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["build", "-t", "gcr.io/$PROJECT_ID/$SERVICE_NAME", "."]
+
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["push", "gcr.io/$PROJECT_ID/$SERVICE_NAME"]
+
+  - name: "gcr.io/cloud-builders/gcloud"
+    args: ["beta", "run", "deploy", $SERVICE_NAME, "--image", "gcr.io/$PROJECT_ID/$SERVICE_NAME", "--platform", $GCR_PLATFORM, "--region", $GCR_REGION]
+    env:
+      - "GCR_PLATFORM=managed"
+      - "GCR_REGION=us-central1"
+
+images:
+  - "gcr.io/$PROJECT_ID/$SERVICE_NAME"
+
+options:
+  env:
+    - "SERVICE_NAME=indieweb-endpoints-cc-web"
