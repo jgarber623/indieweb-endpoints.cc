@@ -52,7 +52,7 @@ GEM
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
       rake
-    hashdiff (0.4.0)
+    hashdiff (1.0.0)
     http (5.0.0.pre)
       addressable (~> 2.3)
       http-cookie (~> 1.0)
