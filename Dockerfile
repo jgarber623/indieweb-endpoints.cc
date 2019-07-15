@@ -20,7 +20,8 @@ WORKDIR /usr/src/app
 
 COPY Gemfile Gemfile.lock ./
 
-RUN bundle install --clean --no-cache --without development test \
+RUN bundle install --no-cache --without development test \
+    && bundle clean --force \
     && rm -rf /usr/local/bundle/cache/*.gem \
     && find /usr/local/bundle/gems/ -name "*.c" -delete \
     && find /usr/local/bundle/gems/ -name "*.o" -delete
