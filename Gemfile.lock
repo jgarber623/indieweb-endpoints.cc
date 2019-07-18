@@ -66,7 +66,7 @@ GEM
     i18n (1.6.0)
       concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
-    indieweb-endpoints (1.0.0)
+    indieweb-endpoints (1.0.1)
       absolutely (~> 3.0)
       addressable (~> 2.6)
       http (~> 5.0.0.pre)
