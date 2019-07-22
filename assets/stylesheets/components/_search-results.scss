@@ -58,3 +58,19 @@
     margin: var(--spacing-small) 0 0 0;
   }
 }
+
+.search-results-cli {
+  margin: 0 0 var(--spacing-large) 0;
+
+  figcaption {
+    margin: 0 0 var(--spacing-small) 0;
+  }
+
+  kbd {
+    background: var(--white);
+    display: block;
+    font-size: 1rem;
+    margin: var(--spacing-small) 0;
+    padding: var(--spacing-small);
+  }
+}
