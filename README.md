@@ -21,7 +21,7 @@ https://indieweb-endpoints.cc/search?url=https://sixtwothree.org
 Lastly, if you're comfortable working on the command line, you can query the service directly using a tool like [curl](https://curl.haxx.se):
 
 ```sh
-curl --header 'Accept: application/json' 'https://indieweb-endpoints.cc/search?url=https://sixtwothree.org'
+curl --header 'Accept: application/json' --silent 'https://indieweb-endpoints.cc/search?url=https://sixtwothree.org'
 ```
 
 …or [Wget](https://www.gnu.org/software/wget/):
