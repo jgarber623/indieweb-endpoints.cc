@@ -2,8 +2,6 @@ ruby '2.6.3'
 
 source 'https://rubygems.org'
 
-git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
-
 gem 'breakpoint', '~> 2.7'
 gem 'indieweb-endpoints', '~> 1.0'
 gem 'rack', '~> 2.0'
