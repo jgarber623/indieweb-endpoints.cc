@@ -8,6 +8,7 @@ module IndiewebEndpoints
       set :root, File.dirname(File.expand_path('..', __dir__))
 
       set :raise_errors, true
+      set :raise_sinatra_param_exceptions, true
       set :show_exceptions, :after_handler
 
       set :assets_css_compressor, :sass
@@ -26,15 +27,11 @@ module IndiewebEndpoints
     register Sinatra::RespondWith
 
     before do
-      message = 'The requested method is not allowed'
-
-      halt(405, message) unless request.head? || request.get?
+      raise MethodNotAllowed unless request.head? || request.get?
     end
 
     after do
-      message = 'The requested format is not supported'
-
-      halt(406, message) if status == 500 && body.include?('Unknown template engine')
+      halt(406, { 'Content-Type' => 'text/plain' }, 'The requested format is not supported') if status == 500 && body.include?('Unknown template engine')
     end
 
     get '/', provides: :html do
@@ -44,7 +41,7 @@ module IndiewebEndpoints
     end
 
     get '/search', provides: [:html, :json] do
-      param :url, required: true, transform: :strip, format: URI.regexp(%w[http https]), raise: true
+      param :url, required: true, transform: :strip, format: URI.regexp(%w[http https])
 
       client = IndieWeb::Endpoints::Client.new(params[:url])
       endpoints = client.endpoints.to_h
@@ -53,29 +50,27 @@ module IndiewebEndpoints
         format.json { json endpoints }
       end
     rescue IndieWeb::Endpoints::InvalidURIError, Sinatra::Param::InvalidParameterError
-      halt 400
+      raise BadRequest, 'Parameter url is required and must be a valid URL (e.g. https://example.com)'
     rescue IndieWeb::Endpoints::IndieWebEndpointsError
-      halt 408
+      raise RequestTimeout, 'The request timed out and could not be completed'
     end
 
     error 400 do
-      message = 'Parameter url is required and must be a valid URL (e.g. https://example.com)'
-
-      respond_with :'400', error: { code: 400, message: message }
+      respond_with :'400', error: { code: 400, message: env['sinatra.error'].message }
     end
 
     error 404 do
       cache_control :public
 
-      message = 'The requested URL could not be found'
+      respond_with :'404', error: { code: 404, message: 'The requested URL could not be found' }
+    end
 
-      respond_with :'404', error: { code: 404, message: message }
+    error 405 do
+      halt 405, { 'Content-Type' => 'text/plain' }, 'The requested method is not allowed'
     end
 
     error 408 do
-      message = 'The request timed out and could not be completed'
-
-      respond_with :'408', error: { code: 408, message: message }
+      respond_with :'408', error: { code: 408, message: env['sinatra.error'].message }
     end
   end
 end
