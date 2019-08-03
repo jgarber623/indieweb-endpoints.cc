@@ -1,9 +1,9 @@
 GIT
   remote: https://github.com/jgarber623/sinatra-param.git
-  revision: 4381fc49022f973788a177297a7efbc6077a6b3b
-  tag: v3.1.0
+  revision: d16b696e9585a9b135e91bd637ff55b7e6ededb7
+  tag: v3.1.1
   specs:
-    sinatra-param (3.1.0)
+    sinatra-param (3.1.1)
       activesupport (~> 5.2)
       sinatra (~> 2.0)
 
