@@ -224,7 +224,7 @@ DEPENDENCIES
   sinatra-asset-pipeline (~> 2.2)
   sinatra-contrib (~> 2.0)
   sinatra-param!
-  webmock (~> 3.6)
+  webmock (~> 3.7)
 
 RUBY VERSION
    ruby 2.6.3p62
