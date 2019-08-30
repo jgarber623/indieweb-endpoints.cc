@@ -1,7 +1,7 @@
 ##################################################
 # Build Stage
 ##################################################
-FROM ruby:2.6.3-slim-stretch as Build
+FROM ruby:2.6.4-slim-stretch as Build
 
 ENV RACK_ENV production
 
@@ -33,7 +33,7 @@ RUN bundle exec rake assets:precompile
 ##################################################
 # Final Stage
 ##################################################
-FROM ruby:2.6.3-slim-stretch
+FROM ruby:2.6.4-slim-stretch
 
 ENV RACK_ENV production
 ENV EXECJS_RUNTIME Disabled
