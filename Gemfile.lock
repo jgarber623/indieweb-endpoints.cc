@@ -100,7 +100,7 @@ GEM
     rainbow (3.0.0)
     rake (12.3.3)
     rb-fsevent (0.10.3)
-    rb-inotify (0.10.0)
+    rb-inotify (0.10.1)
       ffi (~> 1.0)
     reek (5.5.0)
       codeclimate-engine-rb (~> 0.4.0)
@@ -182,7 +182,7 @@ GEM
       unicode-display_width (~> 1.1, >= 1.1.1)
     thread_safe (0.3.6)
     tilt (2.0.10)
-    tzinfo (1.2.5)
+    tzinfo (1.2.6)
       thread_safe (~> 0.1)
     unf (0.1.4)
       unf_ext
