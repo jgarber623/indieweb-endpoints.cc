@@ -3,7 +3,7 @@ ruby '2.6.5'
 source 'https://rubygems.org'
 
 gem 'breakpoint', '~> 2.7'
-gem 'indieweb-endpoints', '~> 1.0'
+gem 'indieweb-endpoints', '~> 1.1'
 gem 'rack', '~> 2.1'
 gem 'rack-host-redirect', '~> 1.3'
 gem 'rack-ssl-enforcer', '~> 0.2.9'
@@ -17,9 +17,9 @@ gem 'sinatra-param', github: 'jgarber623/sinatra-param', tag: 'v3.2.0'
 group :development, :test do
   gem 'rack-test', '~> 1.1'
   gem 'rake', '~> 12.3'
-  gem 'reek', '~> 5.5', require: false
+  gem 'reek', '~> 5.6', require: false
   gem 'rspec', '~> 3.9'
-  gem 'rubocop', '~> 0.78.0', require: false
+  gem 'rubocop', '~> 0.79.0', require: false
   gem 'rubocop-performance', '~> 1.5', require: false
   gem 'rubocop-rspec', '~> 1.37', require: false
   gem 'webmock', '~> 3.7', require: false
