@@ -10,4 +10,6 @@ Dir.glob(File.join(Dir.pwd, 'spec', 'support', '**', '*.rb')).sort.each { |f| re
 RSpec.configure do |config|
   config.include FixtureHelpers
   config.include RSpecMixin
+
+  config.disable_monkey_patching!
 end

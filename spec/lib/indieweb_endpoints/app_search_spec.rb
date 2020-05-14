@@ -1,4 +1,4 @@
-describe IndiewebEndpoints::App do
+RSpec.describe IndiewebEndpoints::App do
   let(:message) { 'Parameter url is required and must be a valid URL (e.g. https://example.com)' }
 
   let(:example_url) { 'https://example.com' }

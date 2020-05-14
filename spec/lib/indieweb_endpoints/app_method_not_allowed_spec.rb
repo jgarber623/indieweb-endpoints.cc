@@ -1,4 +1,4 @@
-describe IndiewebEndpoints::App do
+RSpec.describe IndiewebEndpoints::App do
   let(:message) { 'The requested method is not allowed' }
 
   context 'when POST /' do

@@ -1,4 +1,4 @@
-describe IndiewebEndpoints::App do
+RSpec.describe IndiewebEndpoints::App do
   context 'when GET /' do
     before do
       get '/'

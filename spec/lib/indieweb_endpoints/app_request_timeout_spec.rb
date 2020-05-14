@@ -1,4 +1,4 @@
-describe IndiewebEndpoints::App do
+RSpec.describe IndiewebEndpoints::App do
   let(:message) { 'The request timed out and could not be completed' }
 
   let(:example_url) { 'https://example.com' }
