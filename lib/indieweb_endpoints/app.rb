@@ -3,7 +3,7 @@ module IndiewebEndpoints
     configure do
       use Rack::Protection, except: [:remote_token, :session_hijacking, :xss_header]
       use Rack::Protection::ContentSecurityPolicy, default_src: "'self'", style_src: "'self' https://fonts.googleapis.com", font_src: "'self' https://fonts.gstatic.com", frame_ancestors: "'none'"
-      use Rack::Protection::StrictTransport, max_age: 31536000, include_subdomains: true, preload: true
+      use Rack::Protection::StrictTransport, max_age: 31_536_000, include_subdomains: true, preload: true
 
       set :root, File.dirname(File.expand_path('..', __dir__))
 
@@ -41,7 +41,7 @@ module IndiewebEndpoints
     end
 
     get '/search', provides: [:html, :json] do
-      param :url, required: true, transform: :strip, format: URI.regexp(%w[http https])
+      param :url, required: true, transform: :strip, format: URI::DEFAULT_PARSER.make_regexp(%w[http https])
 
       client = IndieWeb::Endpoints::Client.new(params[:url])
       endpoints = client.endpoints.to_h
