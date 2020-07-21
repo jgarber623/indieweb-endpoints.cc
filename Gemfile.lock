@@ -1,9 +1,9 @@
 GIT
   remote: https://github.com/jgarber623/sinatra-param.git
-  revision: 74d836dae573c294bab151fbf26db7983dee12bb
-  tag: v3.2.0
+  revision: a09333c1403cbe391730fe081096adfc10e3d14f
+  tag: v3.3.0
   specs:
-    sinatra-param (3.2.0)
+    sinatra-param (3.3.0)
       activesupport (~> 6.0)
       sinatra (~> 2.0)
 
@@ -53,7 +53,7 @@ GEM
     http-form_data (2.3.0)
     http-parser (1.2.1)
       ffi-compiler (>= 1.0, < 2.0)
-    i18n (1.8.3)
+    i18n (1.8.4)
       concurrent-ruby (~> 1.0)
     indieweb-endpoints (3.0.0)
       absolutely (~> 4.0)
