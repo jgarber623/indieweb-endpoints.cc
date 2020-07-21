@@ -44,7 +44,7 @@ module IndiewebEndpoints
       param :url, required: true, transform: :strip, format: URI::DEFAULT_PARSER.make_regexp(%w[http https])
 
       client = IndieWeb::Endpoints::Client.new(params[:url])
-      endpoints = client.endpoints.to_h
+      endpoints = client.endpoints
 
       respond_with :search, endpoints: endpoints, canonical_url: client.response.uri do |format|
         format.json { json endpoints }
