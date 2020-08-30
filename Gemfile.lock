@@ -22,7 +22,7 @@ GEM
       public_suffix (>= 2.0.2, < 5.0)
     ansi (1.5.0)
     ast (2.4.1)
-    backports (3.18.1)
+    backports (3.18.2)
     breakpoint (2.7.1)
       sass (~> 3.3)
       sassy-maps (< 1.0.0)
