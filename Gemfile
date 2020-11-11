@@ -3,7 +3,7 @@ ruby '2.6.6'
 source 'https://rubygems.org'
 
 gem 'breakpoint', '~> 2.7'
-gem 'indieweb-endpoints', '~> 4.0'
+gem 'indieweb-endpoints', '~> 5.0'
 gem 'rack', '~> 2.2'
 gem 'rack-host-redirect', '~> 1.3'
 gem 'rack-ssl-enforcer', '~> 0.2.9'
@@ -31,5 +31,5 @@ end
 
 group :test do
   gem 'simplecov', '~> 0.19.1', require: false
-  gem 'simplecov-console', '~> 0.7.2', require: false
+  gem 'simplecov-console', '~> 0.8.0', require: false
 end
