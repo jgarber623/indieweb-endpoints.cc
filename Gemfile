@@ -22,8 +22,8 @@ group :development, :test do
   gem 'rubocop', '~> 1.6', require: false
   gem 'rubocop-performance', '~> 1.9', require: false
   gem 'rubocop-rake', '~> 0.5.1', require: false
-  gem 'rubocop-rspec', '~> 2.0', require: false
-  gem 'webmock', '~> 3.10', require: false
+  gem 'rubocop-rspec', '~> 2.1', require: false
+  gem 'webmock', '~> 3.11', require: false
 end
 
 group :development do
