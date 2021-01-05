@@ -19,7 +19,7 @@ group :development, :test do
   gem 'rake', '~> 12.3'
   gem 'reek', '~> 6.0', require: false
   gem 'rspec', '~> 3.10'
-  gem 'rubocop', '~> 1.6', require: false
+  gem 'rubocop', '~> 1.7', require: false
   gem 'rubocop-performance', '~> 1.9', require: false
   gem 'rubocop-rake', '~> 0.5.1', require: false
   gem 'rubocop-rspec', '~> 2.1', require: false
@@ -31,6 +31,6 @@ group :development do
 end
 
 group :test do
-  gem 'simplecov', '~> 0.20.0', require: false
+  gem 'simplecov', '~> 0.21.1', require: false
   gem 'simplecov-console', '~> 0.8.0', require: false
 end
