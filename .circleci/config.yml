@@ -5,7 +5,7 @@ orbs:
 
 references:
   executor: &executor
-    name: node/default
+    name: ruby/default
     tag: 2.6.6
   filters: &filters
     branches:
