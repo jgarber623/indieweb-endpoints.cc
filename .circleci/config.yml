@@ -27,8 +27,18 @@ jobs:
       - checkout
       - ruby/install-deps
       - run:
+          name: Install CodeClimate test reporter
+          command: |
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+            chmod +x ./cc-test-reporter
+            ./cc-test-reporter before-build
+      - run:
           name: Run RSpec task
           command: bundle exec rspec
+      - run:
+          name: Upload coverage report to CodeClimate
+          command: ./cc-test-reporter after-build
+
 
   rubocop:
     executor: *executor
