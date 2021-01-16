@@ -1,0 +1,49 @@
+version: 2.1
+
+orbs:
+  ruby: circleci/ruby@1.1.2
+
+references:
+  executor: &executor
+    name: node/default
+    tag: 2.6.6
+  filters: &filters
+    branches:
+      ignore: production
+
+jobs:
+  reek:
+    executor: *executor
+    steps:
+      - checkout
+      - ruby/install-deps
+      - run:
+          name: Run Reek task
+          command: bundle exec reek
+
+  rspec:
+    executor: *executor
+    steps:
+      - checkout
+      - ruby/install-deps
+      - ruby/rspec-test:
+          label: Run RSpec task
+
+  rubocop:
+    executor: *executor
+    steps:
+      - checkout
+      - ruby/install-deps
+      - ruby/rubocop-check:
+          label: Run RuboCop task
+
+workflows:
+  version: 2
+  default:
+    jobs:
+      - reek:
+          filters: *filters
+      - rspec:
+          filters: *filters
+      - rubocop:
+          filters: *filters
