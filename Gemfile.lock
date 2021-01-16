@@ -1,10 +1,10 @@
 GIT
   remote: https://github.com/jgarber623/sinatra-param.git
-  revision: a09333c1403cbe391730fe081096adfc10e3d14f
-  tag: v3.3.0
+  revision: 97dc3c6936732f4a0ff07d20a49be1a1948b9b20
+  tag: v3.4.0
   specs:
-    sinatra-param (3.3.0)
-      activesupport (~> 6.0)
+    sinatra-param (3.4.0)
+      activesupport (~> 6.1)
       sinatra (~> 2.0)
 
 GEM
