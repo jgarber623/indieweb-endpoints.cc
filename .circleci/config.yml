@@ -26,16 +26,18 @@ jobs:
     steps:
       - checkout
       - ruby/install-deps
-      - ruby/rspec-test:
-          label: Run RSpec task
+      - run:
+          name: Run RSpec task
+          command: bundle exec rspec
 
   rubocop:
     executor: *executor
     steps:
       - checkout
       - ruby/install-deps
-      - ruby/rubocop-check:
-          label: Run RuboCop task
+      - run:
+          name: Run RuboCop task
+          command: bundle exec rubocop
 
 workflows:
   version: 2
