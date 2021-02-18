@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+set -e
+
+export RUBYOPT="-W0"
+
+echo '[ bin/ci ] Running test suite...'
+bundle exec rspec
+
+echo '[ bin/ci ] Analyzing Ruby dependencies for security vulnerabilities...'
+bundle exec bundle audit check --update
+
+echo '[ bin/ci ] Running code quality checks...'
+bundle exec rubocop
+bundle exec reek
+
+echo '[ bin/ci ] Done!'
