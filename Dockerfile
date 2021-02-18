@@ -1,7 +1,9 @@
+FROM ruby:2.7.2-slim-buster as Ruby
+
 ##################################################
 # Build Stage
 ##################################################
-FROM ruby:2.6.6-slim-stretch as Build
+FROM Ruby as Build
 
 ENV RACK_ENV production
 
@@ -10,7 +12,6 @@ RUN apt-get update \
         g++ \
         git \
         make \
-        nodejs \
     && rm -rf /var/lib/apt/lists/* \
     && gem update --system \
     && gem install bundler \
@@ -35,10 +36,9 @@ RUN bundle exec rake assets:precompile
 ##################################################
 # Final Stage
 ##################################################
-FROM ruby:2.6.6-slim-stretch
+FROM Ruby
 
 ENV RACK_ENV production
-ENV EXECJS_RUNTIME Disabled
 
 COPY --from=Build /usr/local/bundle /usr/local/bundle
 COPY --from=Build /usr/src/app /usr/src/app
