@@ -2,6 +2,4 @@
 
 set -e
 
-export RUBYOPT="-W0"
-
 bundle exec shotgun --host 0.0.0.0
