@@ -11,9 +11,9 @@ I definitely appreciate your interest in (and help improving) IndieWeb Endpoints
 
 ## Installation
 
-IndieWeb Endpoints is written in [Ruby](https://www.ruby-lang.org) (version 2.6.6) and uses the [Bundler](https://bundler.io) gem to manage Ruby dependencies. Install Ruby 2.6.6 using a method of your choice (e.g. [rbenv](https://github.com/rbenv/rbenv), [chruby](https://github.com/postmodern/chruby), or [RVM](https://rvm.io)).
+IndieWeb Endpoints is written in [Ruby](https://www.ruby-lang.org) (version 2.7.2) and uses the [Bundler](https://bundler.io) gem to manage Ruby dependencies. Install Ruby 2.7.2 using a method of your choice (e.g. [rbenv](https://github.com/rbenv/rbenv), [chruby](https://github.com/postmodern/chruby), or [RVM](https://rvm.io)).
 
-Once you've installed Ruby 2.6.6, install Bundler and the project's dependencies by running:
+Once you've installed Ruby 2.7.2, install Bundler and the project's dependencies by running:
 
 ```sh
 gem install bundler
