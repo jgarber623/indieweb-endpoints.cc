@@ -1,4 +1,4 @@
-FROM ruby:2.7.2-slim-buster as Ruby
+FROM ruby:2.7.2-alpine as Ruby
 
 ##################################################
 # Build Stage
@@ -7,17 +7,12 @@ FROM Ruby as Build
 
 ENV RACK_ENV production
 
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
+RUN apk add --no-cache \
         g++ \
         git \
         make \
-    && rm -rf /var/lib/apt/lists/* \
-    && gem update --system \
-    && gem install bundler \
     && bundle config --global frozen true \
-    && bundle config --global no-cache 'true' \
-    && bundle config --global without 'development test'
+    && bundle config --global without "development test"
 
 WORKDIR /usr/src/app
 
