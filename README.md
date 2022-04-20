@@ -2,6 +2,7 @@
 
 **Discover a URL's IndieAuth, Micropub, Microsub, and Webmention endpoints.**
 
+[![Build](https://img.shields.io/github/workflow/status/jgarber623/indieweb-endpoints.cc/CI?logo=github&style=for-the-badge)](https://github.com/jgarber623/indieweb-endpoints.cc/actions/workflows/ci.yml)
 [![Maintainability](https://img.shields.io/codeclimate/maintainability/jgarber623/indieweb-endpoints.cc.svg?logo=code-climate&style=for-the-badge)](https://codeclimate.com/github/jgarber623/indieweb-endpoints.cc)
 [![Coverage](https://img.shields.io/codeclimate/c/jgarber623/indieweb-endpoints.cc.svg?logo=code-climate&style=for-the-badge)](https://codeclimate.com/github/jgarber623/indieweb-endpoints.cc/code)
 [![Vulnerabilities](https://img.shields.io/snyk/vulnerabilities/github/jgarber623/indieweb-endpoints.cc.svg?logo=snyk&style=for-the-badge)](https://snyk.io/test/github/jgarber623/indieweb-endpoints.cc)
