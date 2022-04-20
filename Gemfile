@@ -5,6 +5,7 @@ ruby '3.1.2'
 source 'https://rubygems.org'
 
 gem 'puma'
+gem 'roda'
 
 group :development do
   gem 'rerun'
