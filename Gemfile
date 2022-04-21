@@ -6,7 +6,12 @@ source 'https://rubygems.org'
 
 gem 'puma'
 gem 'rack'
+gem 'rack-host-redirect'
+gem 'rake'
 gem 'roda'
+gem 'roda-sprockets'
+gem 'sassc'
+gem 'tilt'
 
 group :development do
   gem 'pry-byebug'
@@ -14,7 +19,7 @@ group :development do
 end
 
 group :test do
-  gem 'bundler-audit'
+  gem 'bundler-audit', require: false
   gem 'rack-test'
   gem 'reek', require: false
   gem 'rspec'
