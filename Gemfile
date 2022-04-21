@@ -20,6 +20,7 @@ end
 
 group :test do
   gem 'bundler-audit', require: false
+  gem 'code-scanning-rubocop', require: false
   gem 'rack-test'
   gem 'rspec'
   gem 'rspec-github', require: false
