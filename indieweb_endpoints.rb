@@ -29,11 +29,11 @@ class IndieWebEndpoints < Roda
          debug: false,
          precompile: %w[application.css apple-touch-icon-180x180.png icon.png]
 
- configure do
-   use Rack::CommonLogger
- end
+  configure do
+    use Rack::CommonLogger
+  end
 
- configure :production do
+  configure :production do
     use Rack::Deflater
     use Rack::HostRedirect, %w[indieweb-endpoints-cc-web-f6guikqi7q-uc.a.run.app www.indieweb-endpoints.cc] => 'indieweb-endpoints.cc'
     use Rack::Static, urls: ['/assets'], root: 'public'
