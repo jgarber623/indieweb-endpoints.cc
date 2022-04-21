@@ -4,6 +4,7 @@ class IndieWebEndpoints < Roda
   # Routing plugins
   plugin :public
   plugin :status_handler
+  plugin :type_routing, exclude: [:xml]
 
   # Rendering plugins
   plugin :render
@@ -48,5 +49,15 @@ class IndieWebEndpoints < Roda
 
       view :index
     end
+  end
+
+  status_handler(404) do |r|
+    response.cache_control public: true
+
+    error = { error: { code: 404, message: 'The requested URL could not be found' } }
+
+    r.json { error.to_json }
+
+    view :not_found, locals: error
   end
 end
