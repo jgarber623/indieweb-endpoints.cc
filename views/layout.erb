@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+
+  <title>IndieWeb Endpoints</title>
+
+  <meta name="apple-mobile-web-app-title" content="IndieWeb Endpoints">
+  <meta name="application-name" content="IndieWeb Endpoints">
+  <meta name="description" content="Discover a URL’s IndieAuth, Micropub, Microsub, and Webmention endpoints.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@jgarber">
+  <meta property="og:description" content="Discover a URL’s IndieAuth, Micropub, Microsub, and Webmention endpoints.">
+  <meta property="og:title" content="IndieWeb Endpoints">
+
+  <link rel="apple-touch-icon" href="<%= asset_path 'apple-touch-icon-180x180.png' %>">
+  <link rel="shortcut icon" href="<%= asset_path 'icon.png' %>">
+
+  <link rel="stylesheet" href="<%= asset_path 'application.css' %>">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alfa+Slab+One|Gentium+Book+Basic:400,700&display=swap">
+</head>
+<body>
+
+  <header class="app-header h-x-app">
+    <div class="wrapper">
+      <h1>
+        <a href="/" class="p-name u-url" rel="home">
+          <img src="<%= asset_path 'icon.png' %>" alt="" class="u-icon">
+          IndieWeb Endpoints
+        </a>
+      </h1>
+
+      <p class="p-summary">Discover a URL’s <a href="https://indieweb.org/IndieAuth">IndieAuth</a>, <a href="https://indieweb.org/Micropub">Micropub</a>, <a href="https://indieweb.org/Microsub">Microsub</a>, and <a href="https://indieweb.org/Webmention">Webmention</a> endpoints.</p>
+    </div>
+  </header>
+
+  <main class="app-main">
+    <div class="wrapper">
+      <%= yield %>
+    </div>
+  </main>
+
+  <footer class="app-footer">
+    <div class="wrapper">
+      <p>Designed and built by <a href="https://sixtwothree.org" class="h-card">Jason Garber</a>. Curious about the IndieWeb? Visit <a href="https://indieweb.org">indieweb.org</a> for details.</p>
+      <small>IndieWeb Endpoints is freely available under the <a href="https://opensource.org/licenses/MIT" rel="license">MIT License</a>. Source code is available on <a href="https://github.com/jgarber623/indieweb-endpoints.cc" rel="source">GitHub</a>.</small>
+    </div>
+  </footer>
+
+</body>
+</html>
