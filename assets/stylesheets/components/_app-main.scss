@@ -1,0 +1,19 @@
+.app-main {
+  background-color: var(--quill-gray);
+  min-height: 50vh;
+  padding: var(--spacing);
+
+  h1 {
+    font-size: 1.75rem;
+    margin-top: 0;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    margin-top: 0;
+  }
+
+  p {
+    margin: 0 0 var(--spacing) 0;
+  }
+}

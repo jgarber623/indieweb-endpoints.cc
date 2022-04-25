@@ -1,0 +1,22 @@
+.app-footer {
+  border-top: var(--spacing-tiny) solid var(--white);
+  color: var(--white);
+  padding: var(--spacing);
+
+  p {
+    margin: 0 0 var(--spacing) 0;
+  }
+
+  small {
+    font-size: 1rem;
+  }
+
+  a {
+    color: var(--quill-gray);
+
+    &:focus,
+    &:hover {
+      color: var(--white);
+    }
+  }
+}

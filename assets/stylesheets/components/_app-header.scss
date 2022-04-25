@@ -1,0 +1,39 @@
+.app-header {
+  background-color: var(--quill-gray);
+  padding: var(--spacing-large) var(--spacing);
+
+  h1 {
+    margin: 0;
+    position: relative;
+
+    a {
+      color: var(--shark);
+      text-decoration: none;
+
+      &:focus,
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    img {
+      box-sizing: content-box;
+      display: none;
+      position: relative;
+      top: 0.175rem;
+      width: 2rem;
+
+      @media (min-width: 32rem) {
+        display: inline-block;
+      }
+
+      @media (min-width: 56rem) {
+        display: block;
+        left: calc(-2rem - var(--spacing-small));
+        padding-right: var(--spacing-small);
+        position: absolute;
+        top: 0.015rem;
+      }
+    }
+  }
+}
