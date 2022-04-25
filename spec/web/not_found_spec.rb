@@ -11,7 +11,7 @@ RSpec.describe IndieWebEndpoints, roda: :app do
       end
 
       it { is_expected.to be_not_found }
-      it { expect(response.body).to include(message) }
+      its(:body) { is_expected.to include(message) }
     end
 
     context 'when requesting application/json' do
@@ -21,7 +21,7 @@ RSpec.describe IndieWebEndpoints, roda: :app do
       end
 
       it { is_expected.to be_not_found }
-      it { expect(response.body).to eq({ error: { code: 404, message: message } }.to_json) }
+      its(:body) { is_expected.to eq({ error: { code: 404, message: message } }.to_json) }
     end
   end
 end
