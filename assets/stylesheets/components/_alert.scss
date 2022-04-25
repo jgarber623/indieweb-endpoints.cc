@@ -1,0 +1,16 @@
+[role="alert"] {
+  background-color: var(--pomegranate);
+  color: var(--white);
+  font-weight: bold;
+  margin: 0;
+  padding: var(--spacing);
+
+  a {
+    color: var(--quill-gray);
+
+    &:focus,
+    &:hover {
+      color: var(--white);
+    }
+  }
+}
