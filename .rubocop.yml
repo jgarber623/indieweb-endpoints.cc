@@ -1,2 +1,5 @@
 inherit_from:
   - https://raw.githubusercontent.com/jgarber623/rubocop-configs/main/.rubocop.roda.yml
+
+RSpec/FilePath:
+  SpecSuffixOnly: true
