@@ -9,9 +9,26 @@ RSpec.describe IndieWebEndpoints, roda: :app do
   end
 
   describe 'POST /' do
-    before { post '/' }
+    let(:message) { 'The requested method is not allowed' }
 
-    it { is_expected.to be_method_not_allowed }
-    its(:body) { is_expected.to eq('The requested method is not allowed') }
+    context 'when requesting text/html' do
+      before do
+        header 'Accept', 'text/html'
+        post '/'
+      end
+
+      it { is_expected.to be_method_not_allowed }
+      its(:body) { is_expected.to eq(message) }
+    end
+
+    context 'when requesting application/json' do
+      before do
+        header 'Accept', 'application/json'
+        post '/'
+      end
+
+      it { is_expected.to be_method_not_allowed }
+      its(:body) { is_expected.to eq({ message: message }.to_json) }
+    end
   end
 end
