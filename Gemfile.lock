@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/jeremyevans/roda.git
+  revision: ef859de3689d8d6ed1acaadb34765580b9d20de4
+  ref: ef859de
+  specs:
+    roda (3.55.0)
+      rack
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -44,8 +52,6 @@ GEM
     rerun (0.13.1)
       listen (~> 3.0)
     rexml (3.2.5)
-    roda (3.55.0)
-      rack
     roda-sprockets (2.0.0)
       roda (~> 3)
       sprockets (>= 2.2)
@@ -123,7 +129,7 @@ DEPENDENCIES
   rack-test
   rake
   rerun
-  roda
+  roda!
   roda-sprockets
   rspec
   rspec-github
