@@ -1,6 +1,13 @@
 # frozen_string_literal: true
 
 RSpec.describe IndieWebEndpoints, roda: :app do
+  describe 'HEAD /' do
+    before { head '/' }
+
+    it { is_expected.to be_ok }
+    its(:body) { is_expected.to be_empty }
+  end
+
   describe 'GET /' do
     before { get '/' }
 
