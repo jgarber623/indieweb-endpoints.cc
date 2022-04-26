@@ -2,6 +2,7 @@
 
 class IndieWebEndpoints < Roda
   # Routing plugins
+  plugin :head
   plugin :not_allowed
   plugin :public
   plugin :status_handler
