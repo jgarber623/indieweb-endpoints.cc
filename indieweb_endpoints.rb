@@ -2,6 +2,7 @@
 
 class IndieWebEndpoints < Roda
   # Routing plugins
+  plugin :not_allowed
   plugin :public
   plugin :status_handler
   plugin :type_routing, exclude: [:xml]
@@ -54,10 +55,21 @@ class IndieWebEndpoints < Roda
   status_handler(404) do |r|
     response.cache_control public: true
 
-    error = { error: { code: 404, message: 'The requested URL could not be found' } }
+    error = { message: 'The requested URL could not be found' }
 
     r.json { error.to_json }
 
     view :not_found, locals: error
+  end
+
+  status_handler(405, keep_headers: true) do |r|
+    # Allow type_routing plugin to set Content-Type header
+    response.headers.delete('Content-Type')
+
+    error = { message: 'The requested method is not allowed' }
+
+    r.json { error.to_json }
+
+    error[:message]
   end
 end
