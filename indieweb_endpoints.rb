@@ -42,7 +42,7 @@ class IndieWebEndpoints < Roda
   # :nocov:
   configure :production do
     use Rack::Deflater
-    use Rack::HostRedirect, %w[indieweb-endpoints-cc-web-f6guikqi7q-uc.a.run.app www.indieweb-endpoints.cc] => 'indieweb-endpoints.cc'
+    use Rack::HostRedirect, [ENV.fetch('HOSTNAME', nil), 'www.indieweb-endpoints.cc'].compact => 'indieweb-endpoints.cc'
     use Rack::Static, urls: ['/assets'], root: 'public'
   end
   # :nocov:
