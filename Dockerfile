@@ -10,6 +10,12 @@ ENV BUNDLE_JOBS=10 \
 
 EXPOSE 8080
 
+# Alpine Linux does not have a glibc-compatible library installed which can
+# cause problems with running gems like Nokogiri.
+#
+# See: https://github.com/sparklemotion/nokogiri/issues/2430
+RUN apk add --no-cache --update gcompat
+
 RUN echo "gem: --no-document" >> ~/.gemrc && \
     gem install bundler --version "${BUNDLER_VERSION}"
 
