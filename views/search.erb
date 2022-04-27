@@ -1,0 +1,46 @@
+<h1>Search Results</h1>
+
+<p>Found the following IndieWeb endpoints for <a href="<%= canonical_url %>"><%= canonical_url %></a>:</p>
+
+<table class="search-results-table" role="table">
+  <caption>IndieWeb endpoints for <a href="<%= canonical_url %>"><%= canonical_url %></a> represented as tabular data.</caption>
+  <tbody role="rowgroup">
+    <% endpoints.each do |type, value| %>
+      <tr role="row">
+        <th role="rowheader" scope="row"><%= type %></th>
+        <td role="cell">
+          <% if value.is_a?(Array) %>
+            <ul>
+              <%= value.map { |val| "<li>#{val}</li>" }.join %>
+            </ul>
+          <% else %>
+            <%= value || "No #{type} endpoint found." %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h2><abbr title="JavaScript Object Notation">JSON</abbr> Data</h2>
+
+<figure class="search-results-data">
+  <output>
+    <pre><%= JSON.pretty_generate(endpoints) %></pre>
+  </output>
+
+  <figcaption>
+    IndieWeb endpoints for <a href="<%= canonical_url %>"><%= canonical_url %></a> represented as JSON.
+  </figcaption>
+</figure>
+
+<h2>Command Line Interface</h2>
+
+<figure class="search-results-cli">
+  <figcaption>
+    Use command line utilities like <a href="https://curl.haxx.se">curl</a> or <a href="https://www.gnu.org/software/wget/">Wget</a> to directly query IndieWeb Endpoints.
+  </figcaption>
+
+  <kbd>curl --header 'Accept: application/json' --silent 'https://indieweb-endpoints.cc/search?url=<%= canonical_url %>'</kbd>
+  <kbd>wget --header 'Accept: application/json' --quiet -O - 'https://indieweb-endpoints.cc/search?url=<%= canonical_url %>'</kbd>
+</figure>
