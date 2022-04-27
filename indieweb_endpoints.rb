@@ -63,10 +63,7 @@ class IndieWebEndpoints < Roda
     view :not_found, locals: error
   end
 
-  status_handler(405, keep_headers: true) do |r|
-    # Allow type_routing plugin to set Content-Type header
-    response.headers.delete('Content-Type')
-
+  status_handler(405, keep_headers: ['Allow']) do |r|
     error = { message: 'The requested method is not allowed' }
 
     r.json { error.to_json }

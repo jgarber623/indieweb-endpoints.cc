@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/jeremyevans/roda.git
-  revision: ef859de3689d8d6ed1acaadb34765580b9d20de4
-  ref: ef859de
+  revision: df6dff1b205d84b88dccb2fc802a7f7298025769
+  ref: df6dff1
   specs:
     roda (3.55.0)
       rack
