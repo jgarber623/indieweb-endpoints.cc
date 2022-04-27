@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class IndieWebEndpoints < Roda
+  class InvalidURIError < StandardError; end
+
   # Routing plugins
   plugin :head
   plugin :not_allowed
@@ -13,6 +15,7 @@ class IndieWebEndpoints < Roda
 
   # Request/Response plugins
   plugin :caching
+  plugin :halt
 
   # plugin :content_security_policy
 
@@ -51,6 +54,31 @@ class IndieWebEndpoints < Roda
 
       view :index
     end
+
+    r.get 'search' do
+      url = r.params['url'].to_s
+
+      raise InvalidURIError unless url.match?(URI::DEFAULT_PARSER.make_regexp(%w[http https]))
+
+      client = IndieWeb::Endpoints::Client.new(url)
+      endpoints = client.endpoints
+
+      r.json { endpoints.to_json }
+
+      view :search, locals: { canonical_url: client.response.uri, endpoints: endpoints }
+    rescue InvalidURIError, IndieWeb::Endpoints::InvalidURIError
+      r.halt 400
+    rescue IndieWeb::Endpoints::HttpError, IndieWeb::Endpoints::SSLError
+      r.halt 408
+    end
+  end
+
+  status_handler(400) do |r|
+    error = { message: 'Parameter url is required and must be a valid URL (e.g. https://example.com)' }
+
+    r.json { error.to_json }
+
+    view :bad_request, locals: error
   end
 
   status_handler(404) do |r|
@@ -69,5 +97,13 @@ class IndieWebEndpoints < Roda
     r.json { error.to_json }
 
     error[:message]
+  end
+
+  status_handler(408) do |r|
+    error = { message: 'The request timed out and could not be completed' }
+
+    r.json { error.to_json }
+
+    view :request_timeout, locals: error
   end
 end
