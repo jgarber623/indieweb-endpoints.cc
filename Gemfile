@@ -4,6 +4,7 @@ ruby '3.1.2'
 
 source 'https://rubygems.org'
 
+gem 'indieweb-endpoints'
 gem 'puma'
 gem 'rack'
 gem 'rack-host-redirect'
