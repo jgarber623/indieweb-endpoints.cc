@@ -5,6 +5,10 @@ on:
     branches-ignore: [production]
   pull_request:
     branches-ignore: [production]
+  workflow_call:
+    secrets:
+      CC_TEST_REPORTER_ID:
+        required: true
   workflow_dispatch:
 
 jobs:
