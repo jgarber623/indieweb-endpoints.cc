@@ -43,7 +43,7 @@ ENV RACK_ENV=production \
     BUNDLE_DEPLOYMENT=1 \
     BUNDLE_WITHOUT=development:test
 
-RUN apk add --no-cache --update g++ git make
+RUN apk add --no-cache --update g++ make
 
 RUN bundle install \
     && bundle clean --force \
