@@ -11,10 +11,10 @@
         <td role="cell">
           <% if value.is_a?(Array) %>
             <ul>
-              <%= value.map { |val| "<li>#{val}</li>" }.join %>
+              <%= value.map { |val| "<li>#{h(val)}</li>" }.join %>
             </ul>
           <% else %>
-            <%= value || "No #{type} endpoint found." %>
+            <%= h(value) || "No #{type} endpoint found." %>
           <% end %>
         </td>
       </tr>
@@ -26,7 +26,7 @@
 
 <figure class="search-results-data">
   <output>
-    <pre><%= JSON.pretty_generate(endpoints) %></pre>
+    <pre><%= h(JSON.pretty_generate(endpoints)) %></pre>
   </output>
 
   <figcaption>

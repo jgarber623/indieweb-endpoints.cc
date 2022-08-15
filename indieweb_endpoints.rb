@@ -11,6 +11,7 @@ class IndieWebEndpoints < Roda
   plugin :type_routing, exclude: [:xml]
 
   # Rendering plugins
+  plugin :h
   plugin :render
 
   # Request/Response plugins
