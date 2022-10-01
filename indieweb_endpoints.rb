@@ -12,6 +12,7 @@ class IndieWebEndpoints < Roda
 
   # Rendering plugins
   plugin :h
+  plugin :link_to
   plugin :render
 
   # Request/Response plugins
@@ -83,7 +84,7 @@ class IndieWebEndpoints < Roda
 
       r.json { endpoints.to_json }
 
-      view :search, locals: { canonical_url: client.response.uri, endpoints: endpoints }
+      view :search, locals: { canonical_url: client.response.uri.to_s, endpoints: endpoints }
     rescue InvalidURIError, IndieWeb::Endpoints::InvalidURIError
       r.halt 400
     rescue IndieWeb::Endpoints::HttpError, IndieWeb::Endpoints::SSLError
