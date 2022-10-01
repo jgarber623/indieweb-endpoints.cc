@@ -1,1 +1,1 @@
-<p role="alert"><%= message %>. Please <a href="<%= request.url %>">try your search again</a>.</p>
+<p role="alert"><%= message %>. Please <%= link_to 'try your search again', request.url %>.</p>

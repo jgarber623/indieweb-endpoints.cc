@@ -1,9 +1,9 @@
 <h1>Search Results</h1>
 
-<p>Found the following IndieWeb endpoints for <a href="<%= canonical_url %>"><%= canonical_url %></a>:</p>
+<p>Found the following IndieWeb endpoints for <%= link_to canonical_url, canonical_url %>:</p>
 
 <table class="search-results-table" role="table">
-  <caption>IndieWeb endpoints for <a href="<%= canonical_url %>"><%= canonical_url %></a> represented as tabular data.</caption>
+  <caption>IndieWeb endpoints for <%= link_to canonical_url, canonical_url %> represented as tabular data.</caption>
   <tbody role="rowgroup">
     <% endpoints.each do |type, value| %>
       <tr role="row">
@@ -30,7 +30,7 @@
   </output>
 
   <figcaption>
-    IndieWeb endpoints for <a href="<%= canonical_url %>"><%= canonical_url %></a> represented as JSON.
+    IndieWeb endpoints for <%= link_to canonical_url, canonical_url %> represented as JSON.
   </figcaption>
 </figure>
 
