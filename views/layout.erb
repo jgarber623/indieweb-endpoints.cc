@@ -15,11 +15,11 @@
   <meta property="og:description" content="Discover a URL’s IndieAuth, Micropub, Microsub, and Webmention endpoints.">
   <meta property="og:title" content="IndieWeb Endpoints">
 
-  <link rel="apple-touch-icon" href="<%= asset_path 'apple-touch-icon-180x180.png' %>">
-  <link rel="shortcut icon" href="<%= asset_path 'icon.png' %>">
+  <link rel="apple-touch-icon" href="<%= image_path 'apple-touch-icon-180x180.png' %>">
+  <link rel="shortcut icon" href="<%= image_path 'icon.png' %>">
 
-  <link rel="stylesheet" href="<%= asset_path 'application.css' %>">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alfa+Slab+One|Gentium+Book+Basic:400,700&display=swap">
+  <%= stylesheet_tag 'application.css' %>
+  <%= stylesheet_tag 'https://fonts.googleapis.com/css?family=Alfa+Slab+One|Gentium+Book+Basic:400,700&display=swap' %>
 </head>
 <body>
 
@@ -27,7 +27,7 @@
     <div class="wrapper">
       <h1>
         <a href="/" class="p-name u-url" rel="home">
-          <img src="<%= asset_path 'icon.png' %>" alt="" class="u-icon">
+          <img src="<%= image_path 'icon.png' %>" alt="" class="u-icon">
           IndieWeb Endpoints
         </a>
       </h1>
