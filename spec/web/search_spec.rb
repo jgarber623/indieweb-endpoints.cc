@@ -72,6 +72,7 @@ RSpec.describe IndieWebEndpoints, roda: :app do
         let(:endpoints) do
           {
             authorization_endpoint: nil,
+            'indieauth-metadata': nil,
             micropub: nil,
             microsub: nil,
             redirect_uri: nil,
