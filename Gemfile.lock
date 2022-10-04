@@ -33,7 +33,7 @@ GEM
     http-cookie (1.0.5)
       domain_name (~> 0.5)
     http-form_data (2.3.0)
-    indieweb-endpoints (7.1.0)
+    indieweb-endpoints (7.2.0)
       http (~> 5.0)
       link-header-parser (~> 4.0)
       nokogiri (~> 1.13)
