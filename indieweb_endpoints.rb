@@ -6,13 +6,13 @@ class IndieWebEndpoints < Roda
   # Routing plugins
   plugin :head
   plugin :not_allowed
-  plugin :public
   plugin :status_handler
   plugin :type_routing, exclude: [:xml]
 
   # Rendering plugins
   plugin :h
   plugin :link_to
+  plugin :public
   plugin :render
 
   # Request/Response plugins
