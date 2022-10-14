@@ -21,8 +21,6 @@ RUN echo "gem: --no-document" >> ~/.gemrc && \
 
 WORKDIR /usr/src/app
 
-COPY Gemfile Gemfile.lock ./
-
 ################################################################################
 # Development
 ################################################################################
@@ -37,6 +35,8 @@ RUN mkdir -p /usr/src/dependencies
 
 VOLUME /usr/src/dependencies
 
+COPY Gemfile Gemfile.lock ./
+
 RUN bundle install
 
 ################################################################################
@@ -49,6 +49,8 @@ ENV RACK_ENV=production \
     BUNDLE_WITHOUT=development:test
 
 RUN apk add --no-cache --update g++ make
+
+COPY Gemfile Gemfile.lock ./
 
 RUN bundle install \
     && bundle clean --force \
