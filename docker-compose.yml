@@ -1,6 +1,6 @@
 services:
   web:
-    image: indieweb-endpoints-cc-web
+    image: jgarber623/indieweb-endpoints-cc-web
     build:
       context: .
       target: development
