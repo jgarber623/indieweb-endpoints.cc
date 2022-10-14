@@ -38,7 +38,7 @@ GEM
       link-header-parser (~> 4.0)
       nokogiri (~> 1.13)
     io-console (0.5.11)
-    irb (1.4.1)
+    irb (1.4.2)
       reline (>= 0.3.0)
     json (2.6.2)
     link-header-parser (4.0.0)
