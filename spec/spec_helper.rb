@@ -16,6 +16,6 @@ RSpec.configure do |config|
   config.disable_monkey_patching!
 
   def app
-    IndieWebEndpoints.freeze.app
+    IndieWebEndpointsApp.freeze.app
   end
 end

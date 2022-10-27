@@ -2,4 +2,4 @@
 
 require_relative 'config/environment'
 
-run IndieWebEndpoints.freeze.app
+run IndieWebEndpointsApp.freeze.app

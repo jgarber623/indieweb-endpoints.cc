@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe IndieWebEndpoints, roda: :app do
+RSpec.describe IndieWebEndpointsApp, roda: :app do
   describe 'HEAD /' do
     before { head '/' }
 
