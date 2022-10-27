@@ -1,9 +1,7 @@
 ################################################################################
 # Base Stage
 ################################################################################
-FROM ruby:3.1.2-alpine3.15 AS base-stage
-
-ARG BUNDLER_VERSION="2.3.11"
+FROM ruby:3.1.2-alpine3.16 AS base-stage
 
 ENV BUNDLE_JOBS=10 \
     BUNDLE_RETRIES=5
@@ -16,8 +14,7 @@ EXPOSE 8080
 # See: https://github.com/sparklemotion/nokogiri/issues/2430
 RUN apk add --no-cache --update gcompat
 
-RUN echo "gem: --no-document" >> ~/.gemrc && \
-    gem install bundler --version "${BUNDLER_VERSION}"
+RUN echo "gem: --no-document" >> ~/.gemrc
 
 WORKDIR /usr/src/app
 
