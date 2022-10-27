@@ -13,7 +13,7 @@ class IndieWebEndpointsApp < Roda
   plugin :h
   plugin :link_to
   plugin :public
-  plugin :render
+  plugin :render, engine: 'html.erb'
 
   # Request/Response plugins
   plugin :caching
