@@ -14,7 +14,7 @@
               <%= value.map { |val| "<li>#{h(val)}</li>" }.join %>
             </ul>
           <% else %>
-            <%= h(value) || "No #{type} endpoint found." %>
+            <%= value ? h(value) : "<i>No #{type} endpoint found.</i>" %>
           <% end %>
         </td>
       </tr>
