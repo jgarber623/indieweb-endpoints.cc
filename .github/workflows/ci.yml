@@ -60,7 +60,7 @@ jobs:
         with:
           bundler-cache: true
       - name: Run RSpec
-        run: bundle exec rspec --format RSpec::Github::Formatter
+        run: bundle exec rspec
       - uses: paambaati/codeclimate-action@v3.2.0
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
