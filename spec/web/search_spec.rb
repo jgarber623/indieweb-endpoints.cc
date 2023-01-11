@@ -35,7 +35,7 @@ RSpec.describe IndieWebEndpointsApp, roda: :app do
           get '/search', url: example_url
         end
 
-        # it { is_expected.to be_request_timeout }
+        it { is_expected.to be_request_timeout }
         its(:body) { is_expected.to include(message) }
       end
 
@@ -45,7 +45,7 @@ RSpec.describe IndieWebEndpointsApp, roda: :app do
           get '/search', url: example_url
         end
 
-        # it { is_expected.to be_request_timeout }
+        it { is_expected.to be_request_timeout }
         its(:body) { is_expected.to eq({ message: message }.to_json) }
       end
     end
