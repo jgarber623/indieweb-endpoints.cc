@@ -1,7 +1,7 @@
 ################################################################################
 # Base Stage
 ################################################################################
-FROM ruby:3.1.3-alpine3.17 AS base-stage
+FROM ruby:3.2.0-alpine3.17 AS base-stage
 
 ENV BUNDLE_JOBS=10 \
     BUNDLE_RETRIES=5
@@ -51,8 +51,8 @@ COPY Gemfile Gemfile.lock ./
 
 RUN bundle install \
     && bundle clean --force \
-    && rm -rf vendor/bundle/ruby/3.1.0/cache/*.gem \
-    && find vendor/bundle/ruby/3.1.0/gems/ \( -name "*.c" -o -name "*.o" \) -delete
+    && rm -rf vendor/bundle/ruby/3.2.0/cache/*.gem \
+    && find vendor/bundle/ruby/3.2.0/gems/ \( -name "*.c" -o -name "*.o" \) -delete
 
 COPY . .
 
