@@ -3,8 +3,8 @@
 ################################################################################
 FROM ruby:3.2.0-alpine3.17 AS base-stage
 
-ENV BUNDLE_JOBS=10 \
-    BUNDLE_RETRIES=5
+# Silence Ruby deprecation warnings and enable YJIT.
+ENV RUBYOPT="-W:no-deprecated --yjit"
 
 EXPOSE 8080
 
