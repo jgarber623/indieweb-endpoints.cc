@@ -55,6 +55,7 @@ jobs:
         with:
           cache-from: type=gha
           cache-to: type=gha,mode=max
+          provenance: false
           push: true
           tags: |
             gcr.io/${{ env.GCP_PROJECT }}/${{ github.repository }}:${{ steps.vars.outputs.short_sha }}
