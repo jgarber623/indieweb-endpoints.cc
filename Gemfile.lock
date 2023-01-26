@@ -8,7 +8,7 @@ GEM
     bundler-audit (0.9.1)
       bundler (>= 1.2.0, < 3)
       thor (~> 1.0)
-    concurrent-ruby (1.1.10)
+    concurrent-ruby (1.2.0)
     crack (0.4.5)
       rexml
     debug (1.7.1)
