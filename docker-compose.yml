@@ -5,7 +5,8 @@ services:
       context: .
       target: development
     container_name: indieweb-endpoints-cc-web
-    entrypoint: tail -f /dev/null
+    init: true
+    entrypoint: sleep infinity
     ports:
       - "8080:8080"
     volumes:
