@@ -1,7 +1,7 @@
 ################################################################################
 # Base Stage
 ################################################################################
-FROM ruby:3.2.1-alpine3.17 AS base-stage
+FROM ruby:3.2.2-alpine3.17 AS base-stage
 
 # Silence Ruby deprecation warnings and enable YJIT.
 ENV RUBYOPT="-W:no-deprecated --yjit"
