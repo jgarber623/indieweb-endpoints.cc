@@ -11,7 +11,7 @@ GEM
     concurrent-ruby (1.2.2)
     crack (0.4.5)
       rexml
-    debug (1.7.1)
+    debug (1.7.2)
       irb (>= 1.5.0)
       reline (>= 0.3.1)
     diff-lcs (1.5.0)
@@ -69,7 +69,7 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     regexp_parser (2.7.0)
-    reline (0.3.2)
+    reline (0.3.3)
       io-console (~> 0.5)
     rerun (0.14.0)
       listen (~> 3.0)
