@@ -57,6 +57,6 @@ jobs:
           bundler-cache: true
       - name: Run RSpec
         run: bundle exec rspec
-      - uses: paambaati/codeclimate-action@v3.2.0
+      - uses: paambaati/codeclimate-action@v4.0.0
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
