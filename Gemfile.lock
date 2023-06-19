@@ -74,7 +74,7 @@ GEM
     rerun (0.14.0)
       listen (~> 3.0)
     rexml (3.2.5)
-    roda (3.68.0)
+    roda (3.69.0)
       rack
     roda-sprockets (2.0.0)
       roda (~> 3)
