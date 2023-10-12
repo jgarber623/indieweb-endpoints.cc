@@ -15,8 +15,6 @@ jobs:
       contents: read
       security-events: write
     uses: ./.github/workflows/ci.yml
-    secrets:
-      CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
   build:
     name: Build
     permissions:
