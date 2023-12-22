@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require 'simplecov_json_formatter'
-require 'simplecov-console'
+require "simplecov_json_formatter"
+require "simplecov-console"
 
 formatters = [
   SimpleCov::Formatter::HTMLFormatter,

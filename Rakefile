@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require_relative 'config/environment'
+require_relative "config/environment"
 
-require 'roda/plugins/sprockets_task'
+require "roda/plugins/sprockets_task"
 
 Roda::RodaPlugins::Sprockets::Task.define!(IndieWebEndpointsApp)
