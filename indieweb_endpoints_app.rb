@@ -50,7 +50,7 @@ class IndieWebEndpointsApp < Roda
   plugin :sprockets,
          css_compressor: :sassc,
          debug: false,
-         precompile: %w[application.css apple-touch-icon-180x180.png icon.png]
+         precompile: ["application.css", "apple-touch-icon-180x180.png", "icon.png"]
 
   configure do
     use Rack::CommonLogger
@@ -77,7 +77,7 @@ class IndieWebEndpointsApp < Roda
     r.get "search" do
       url = r.params["url"].to_s
 
-      raise InvalidURIError unless url.match?(URI::DEFAULT_PARSER.make_regexp(%w[http https]))
+      raise InvalidURIError unless url.match?(URI::DEFAULT_PARSER.make_regexp(["http", "https"]))
 
       client = IndieWeb::Endpoints::Client.new(url)
       endpoints = client.endpoints
