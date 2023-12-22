@@ -1,14 +1,15 @@
 inherit_from:
-  - https://raw.githubusercontent.com/jgarber623/rubocop-configs/main/.rubocop.roda.yml
+  - https://github.com/jgarber623/rubocop-configs/raw/main/.rubocop.yml
+  - https://github.com/jgarber623/rubocop-configs/raw/main/.rubocop-rspec.yml
 
 # Checks that spec file paths are consistent and well-formed.
 RSpec/FilePath:
   SpecSuffixOnly: true
 
+# Checks that spec file paths are consistent and well-formed.
+RSpec/SpecFilePathFormat:
+  Enabled: false
+
 # Checks for nested example groups.
 RSpec/NestedGroups:
   Max: 4
-
-# Checks hash literal syntax.
-Style/HashSyntax:
-  EnforcedShorthandSyntax: either
