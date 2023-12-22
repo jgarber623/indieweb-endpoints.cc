@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
-require 'debug'
-require 'simplecov'
-require 'webmock/rspec'
+require "debug"
+require "simplecov"
+require "webmock/rspec"
 
-ENV['RACK_ENV'] = 'test'
+ENV["RACK_ENV"] = "test"
 
-require_relative '../config/environment'
+require_relative "../config/environment"
 
-Dir.glob(File.join(__dir__, 'support/**/*.rb')).each { |f| require_relative f }
+Dir.glob(File.join(__dir__, "support/**/*.rb")).each { |f| require_relative f }
 
 RSpec.configure do |config|
   config.include Rack::Test::Methods
