@@ -74,7 +74,7 @@ jobs:
         with:
           service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
           workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
-      - uses: google-github-actions/deploy-cloudrun@v1
+      - uses: google-github-actions/deploy-cloudrun@v2
         with:
           image: gcr.io/${{ env.GCP_PROJECT }}/${{ github.repository }}
           service: indieweb-endpoints-cc-web
