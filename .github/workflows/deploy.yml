@@ -2,9 +2,9 @@ name: Deploy
 
 on:
   push:
-    branches: [production]
+    branches: [main]
   workflow_dispatch:
-    branches: [production]
+    branches: [main]
 
 concurrency: production
 
