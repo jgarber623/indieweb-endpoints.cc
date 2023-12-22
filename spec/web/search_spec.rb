@@ -53,7 +53,7 @@ RSpec.describe IndieWebEndpointsApp, roda: :app do
     context "when valid url param" do
       before do
         stub_request(:get, example_url).to_return(
-          headers: { 'Content-Type': "text/html" },
+          headers: { "Content-Type": "text/html" },
           body: '<html><head><link rel="webmention" href="/webmention"></head></html>'
         )
       end
@@ -72,7 +72,7 @@ RSpec.describe IndieWebEndpointsApp, roda: :app do
         let(:endpoints) do
           {
             authorization_endpoint: nil,
-            'indieauth-metadata': nil,
+            "indieauth-metadata": nil,
             micropub: nil,
             microsub: nil,
             redirect_uri: nil,
