@@ -19,9 +19,6 @@ jobs:
         run: bundle exec bundle-audit check --update
   lint:
     name: Lint
-    permissions:
-      contents: read
-      security-events: write
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
