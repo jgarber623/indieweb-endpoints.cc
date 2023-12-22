@@ -2,18 +2,15 @@ name: Deploy
 
 on:
   push:
-    branches: [production]
+    branches: [main]
   workflow_dispatch:
-    branches: [production]
+    branches: [main]
 
 concurrency: production
 
 jobs:
   ci:
     name: CI
-    permissions:
-      contents: read
-      security-events: write
     uses: ./.github/workflows/ci.yml
   build:
     name: Build

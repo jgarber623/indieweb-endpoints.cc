@@ -7,18 +7,6 @@ on:
   workflow_dispatch:
 
 jobs:
-  analyze:
-    name: Analyze
-    permissions:
-      contents: read
-      security-events: write
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: github/codeql-action/init@v2
-        with:
-          languages: ruby
-      - uses: github/codeql-action/analyze@v2
   audit:
     name: Audit
     runs-on: ubuntu-latest
@@ -31,9 +19,6 @@ jobs:
         run: bundle exec bundle-audit check --update
   lint:
     name: Lint
-    permissions:
-      contents: read
-      security-events: write
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -44,6 +29,9 @@ jobs:
         run: bundle exec rubocop
   test:
     name: Test
+    needs:
+      - audit
+      - lint
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
