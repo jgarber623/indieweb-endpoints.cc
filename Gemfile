@@ -16,7 +16,6 @@ gem "tilt"
 
 group :development do
   gem "debug"
-  gem "rerun"
 end
 
 group :test do
