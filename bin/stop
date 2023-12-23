@@ -10,16 +10,16 @@ SCRIPT_DIR=$(cd -- "${DIRNAME}" > /dev/null 2>&1 && pwd)
 usage() {
   cat << EOF
 
-Start services configured in ${COMPOSE_FILE}.
+Stop services configured in ${COMPOSE_FILE}.
 
 $(title USAGE)
-  bin/start [-h, --help]
+  bin/stop [-h, --help]
 
 $(title OPTIONS)
   -h, --help   Show this help.
 
 $(title EXAMPLES)
-  bin/start -- --build   Run this script and pass the '--build' flag to Docker.
+  bin/stop -- --dry-run   Run this script and pass the '--dry-run' flag to Docker.
 
 EOF
 }
@@ -54,5 +54,5 @@ shift $((OPTIND-1)) # Remove parsed options and args from $@ list.
 
 check_for_docker
 
-log "🐳 Starting development environment..."
-docker compose --file "${COMPOSE_FILE}" up "${@}"
+log "🐳 Stopping development environment..."
+docker compose --file "${COMPOSE_FILE}" down "${@}"

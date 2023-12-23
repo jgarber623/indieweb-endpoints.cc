@@ -1,6 +1,0 @@
-#!/usr/bin/env sh
-
-set -e
-
-echo "[ bin/run ] 🏃🏻‍♂️ Running the application..."
-bundle exec rerun --name indieweb-endpoints.cc -- puma --config config/puma.rb
