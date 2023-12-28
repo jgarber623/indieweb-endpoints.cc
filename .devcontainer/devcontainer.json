@@ -1,0 +1,16 @@
+{
+  "name": "indieweb-endpoints-cc",
+  "features": {},
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "EditorConfig.EditorConfig",
+        "Shopify.ruby-lsp"
+      ]
+    }
+  },
+  "workspaceFolder": "/workspace",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "postCreateCommand": "bin/setup"
+}

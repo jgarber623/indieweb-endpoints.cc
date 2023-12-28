@@ -1,51 +1,24 @@
-################################################################################
-# Base Stage
-################################################################################
-FROM ruby:3.2.2-alpine3.17 AS base-stage
+FROM ruby:3.2.2-alpine3.17
+
+EXPOSE 8080
 
 # Silence Ruby deprecation warnings and enable YJIT.
 ENV RUBYOPT="-W:no-deprecated --yjit"
 
-EXPOSE 8080
+ENV RACK_ENV=production \
+    BUNDLE_DEPLOYMENT=1 \
+    BUNDLE_WITHOUT=development:test
+
+WORKDIR /usr/src/app
+
+# Install system dependencies.
+RUN apk add --no-cache --update g++ make
 
 # Alpine Linux does not have a glibc-compatible library installed which can
 # cause problems with running gems like Nokogiri.
 #
 # See: https://github.com/sparklemotion/nokogiri/issues/2430
 RUN apk add --no-cache --update gcompat
-
-RUN echo "gem: --no-document" >> ~/.gemrc
-
-WORKDIR /usr/src/app
-
-################################################################################
-# Development
-################################################################################
-FROM base-stage AS development
-
-ENV RACK_ENV=development \
-    BUNDLE_PATH=/usr/src/dependencies/bundler
-
-RUN apk add --no-cache --update g++ git make
-
-RUN mkdir -p /usr/src/dependencies
-
-VOLUME /usr/src/dependencies
-
-COPY Gemfile Gemfile.lock ./
-
-RUN bundle install
-
-################################################################################
-# Production Build Stage
-################################################################################
-FROM base-stage AS production-build-stage
-
-ENV RACK_ENV=production \
-    BUNDLE_DEPLOYMENT=1 \
-    BUNDLE_WITHOUT=development:test
-
-RUN apk add --no-cache --update g++ make
 
 COPY Gemfile Gemfile.lock ./
 
@@ -57,16 +30,5 @@ RUN bundle install \
 COPY . .
 
 RUN bundle exec rake assets:precompile
-
-################################################################################
-# Production
-################################################################################
-FROM base-stage AS production
-
-ENV RACK_ENV=production \
-    BUNDLE_DEPLOYMENT=1 \
-    BUNDLE_WITHOUT=development:test
-
-COPY --from=production-build-stage /usr/src/app ./
 
 CMD ["bundle", "exec", "puma", "--config", "config/puma.rb"]

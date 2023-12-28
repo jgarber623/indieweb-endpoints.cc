@@ -16,7 +16,10 @@ gem "tilt"
 
 group :development do
   gem "debug"
-  gem "rerun"
+  gem "rubocop", require: false
+  gem "rubocop-performance", require: false
+  gem "rubocop-rake", require: false
+  gem "rubocop-rspec", require: false
 end
 
 group :test do
@@ -24,10 +27,6 @@ group :test do
   gem "rack-test"
   gem "rspec"
   gem "rspec-its"
-  gem "rubocop", require: false
-  gem "rubocop-performance", require: false
-  gem "rubocop-rake", require: false
-  gem "rubocop-rspec", require: false
   gem "simplecov", require: false
   gem "simplecov-console", require: false
   gem "webmock", require: false

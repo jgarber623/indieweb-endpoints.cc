@@ -7,9 +7,9 @@
 .ruby-version
 .simplecov
 *.md
+/.devcontainer/
 /bin/
 /coverage/
 /spec/
-docker-compose.yml
 Dockerfile
 LICENSE

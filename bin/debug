@@ -1,0 +1,13 @@
+#!/usr/bin/env sh
+
+set -e
+
+DIRNAME=$(dirname -- "${0}")
+SCRIPT_DIR=$(cd -- "${DIRNAME}" > /dev/null 2>&1 && pwd)
+
+. "${SCRIPT_DIR}"/shared.lib.sh
+
+run_within_docker $@
+
+log "🐛 Connecting to remote debugging session..."
+bin/bundle exec rdbg --attach

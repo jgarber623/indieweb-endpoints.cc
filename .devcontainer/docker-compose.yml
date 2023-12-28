@@ -1,0 +1,18 @@
+name: indieweb-endpoints-cc
+
+services:
+  app:
+    image: jgarber623/indieweb-endpoints-cc
+    build:
+      context: ..
+      dockerfile: ./.devcontainer/Dockerfile
+    init: true
+    entrypoint: sleep infinity
+    ports:
+      - "8080:8080"
+    volumes:
+      - ..:/workspace:cached
+      - bundle-cache:/usr/local/bundle
+
+volumes:
+  bundle-cache:
