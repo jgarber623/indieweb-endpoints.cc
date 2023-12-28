@@ -1,4 +1,4 @@
-FROM ruby:3.2.2-alpine3.17
+FROM ruby:3.2.2-alpine3.19
 
 EXPOSE 8080
 
