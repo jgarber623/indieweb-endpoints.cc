@@ -4,7 +4,6 @@
 .git*
 .rspec
 .rubocop*
-.ruby-version
 .simplecov
 *.md
 /.devcontainer/
