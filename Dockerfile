@@ -2,8 +2,8 @@ FROM ruby:3.2.2-alpine3.19
 
 EXPOSE 8080
 
-# Silence Ruby deprecation warnings and enable YJIT.
-ENV RUBYOPT="-W:no-deprecated --yjit"
+# Silence Ruby deprecation warnings.
+ENV RUBYOPT="-W:no-deprecated"
 
 ENV RACK_ENV=production \
     BUNDLE_DEPLOYMENT=1 \

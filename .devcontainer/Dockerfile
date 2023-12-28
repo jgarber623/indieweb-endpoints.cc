@@ -8,8 +8,8 @@ ENV EDITOR="vi" \
     PAGER="less" \
     LESS="-FMR"
 
-# Silence Ruby deprecation warnings and enable YJIT.
-ENV RUBYOPT="-W:no-deprecated --yjit"
+# Silence Ruby deprecation warnings.
+ENV RUBYOPT="-W:no-deprecated"
 
 # Configure ruby/debug gem.
 ENV RUBY_DEBUG_HISTORY_FILE="/workspace/.rdbg_history" \
