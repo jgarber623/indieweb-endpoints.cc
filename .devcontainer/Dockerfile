@@ -8,19 +8,26 @@ ENV EDITOR="vi" \
     PAGER="less" \
     LESS="-FMR"
 
-# Silence Ruby deprecation warnings.
-ENV RUBYOPT="-W:no-deprecated"
+# Configure memory allocation.
+ENV LD_PRELOAD="/usr/lib/libjemalloc.so.2"
 
 # Configure ruby/debug gem.
 ENV RUBY_DEBUG_HISTORY_FILE="/workspace/.rdbg_history" \
     RUBY_DEBUG_SAVE_HISTORY="1000"
 
+# Configure application environment.
 ENV RACK_ENV=development
 
 WORKDIR /workspace
 
 # Install system dependencies.
-RUN apk add --no-cache --update g++ git less make openssh
+RUN apk add --no-cache --update \
+      g++ \
+      git \
+      jemalloc \
+      less \
+      make \
+      openssh
 
 # Alpine Linux does not have a glibc-compatible library installed which can
 # cause problems with running gems like Nokogiri.
