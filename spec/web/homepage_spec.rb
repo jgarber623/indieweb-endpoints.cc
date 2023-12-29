@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-RSpec.describe IndieWebEndpointsApp, roda: :app do
+RSpec.describe IndieWebEndpointsApp do
+  subject(:response) { last_response }
+
   describe "HEAD /" do
     before { head "/" }
 

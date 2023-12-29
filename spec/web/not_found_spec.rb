@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-RSpec.describe IndieWebEndpointsApp, roda: :app do
+RSpec.describe IndieWebEndpointsApp do
+  subject(:response) { last_response }
+
   describe "GET /foo" do
     let(:message) { "The requested URL could not be found" }
 
