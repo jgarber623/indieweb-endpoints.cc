@@ -20,7 +20,7 @@ RUN apk add --no-cache --update g++ make
 # See: https://github.com/sparklemotion/nokogiri/issues/2430
 RUN apk add --no-cache --update gcompat
 
-COPY Gemfile Gemfile.lock ./
+COPY .ruby-version Gemfile Gemfile.lock ./
 
 RUN bundle install \
     && bundle clean --force \
