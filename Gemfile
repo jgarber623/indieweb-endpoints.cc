@@ -4,6 +4,10 @@ ruby file: ".ruby-version"
 
 source "https://rubygems.org"
 
+# Contend with Alpine
+gem "google-protobuf", force_ruby_platform: true
+gem "sass-embedded", force_ruby_platform: true
+
 gem "indieweb-endpoints"
 gem "puma"
 gem "rack"
@@ -11,7 +15,7 @@ gem "rack-host-redirect"
 gem "rake"
 gem "roda"
 gem "roda-sprockets"
-gem "sassc"
+gem "sprockets-sass_embedded"
 gem "tilt"
 
 group :development do

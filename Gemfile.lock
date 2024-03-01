@@ -24,6 +24,7 @@ GEM
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
       rake
+    google-protobuf (3.25.3)
     hashdiff (1.1.0)
     http (5.2.0)
       addressable (~> 2.8)
@@ -135,8 +136,9 @@ GEM
       rubocop-capybara (~> 2.17)
       rubocop-factory_bot (~> 2.22)
     ruby-progressbar (1.13.0)
-    sassc (2.4.0)
-      ffi (~> 1.9)
+    sass-embedded (1.71.1)
+      google-protobuf (~> 3.25)
+      rake (>= 13.0.0)
     simplecov (0.22.0)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
@@ -152,6 +154,9 @@ GEM
       rack (>= 2.2.4, < 4)
     sprockets-helpers (1.4.0)
       sprockets (>= 2.2)
+    sprockets-sass_embedded (0.2.2)
+      sass-embedded (>= 1.54.6)
+      sprockets (~> 4.0)
     stringio (3.1.0)
     terminal-table (3.0.2)
       unicode-display_width (>= 1.1.1, < 3)
@@ -174,6 +179,7 @@ PLATFORMS
 DEPENDENCIES
   bundler-audit
   debug
+  google-protobuf
   indieweb-endpoints
   puma
   rack
@@ -188,9 +194,10 @@ DEPENDENCIES
   rubocop-performance
   rubocop-rake
   rubocop-rspec
-  sassc
+  sass-embedded
   simplecov
   simplecov-console
+  sprockets-sass_embedded
   tilt
   webmock
 
