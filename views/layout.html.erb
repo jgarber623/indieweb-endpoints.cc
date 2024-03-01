@@ -2,24 +2,25 @@
 <html lang="en-US">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>IndieWeb Endpoints</title>
+
+  <%= stylesheet_tag "application.css" %>
+  <%= stylesheet_tag "https://fonts.googleapis.com/css?family=Alfa+Slab+One|Gentium+Book+Basic:400,700&display=swap" %>
+
+  <link rel="apple-touch-icon" href="<%= image_path "apple-touch-icon-180x180.png" %>">
+  <link rel="shortcut icon" href="<%= image_path "icon.png" %>">
 
   <meta name="apple-mobile-web-app-title" content="IndieWeb Endpoints">
   <meta name="application-name" content="IndieWeb Endpoints">
   <meta name="description" content="Discover a URL’s IndieAuth, Micropub, Microsub, and Webmention endpoints.">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:site" content="@jgarber">
+  <meta property="og:author_name" content="Jason Garber">
+  <meta property="og:author_url" content="https://sixtwothree.org">
   <meta property="og:description" content="Discover a URL’s IndieAuth, Micropub, Microsub, and Webmention endpoints.">
+  <meta property="og:image" content="<%= image_path "apple-touch-icon-180x180.png" %>">
   <meta property="og:title" content="IndieWeb Endpoints">
-
-  <link rel="apple-touch-icon" href="<%= image_path 'apple-touch-icon-180x180.png' %>">
-  <link rel="shortcut icon" href="<%= image_path 'icon.png' %>">
-
-  <%= stylesheet_tag 'application.css' %>
-  <%= stylesheet_tag 'https://fonts.googleapis.com/css?family=Alfa+Slab+One|Gentium+Book+Basic:400,700&display=swap' %>
 </head>
 <body class="h-x-app">
 
