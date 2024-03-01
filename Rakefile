@@ -4,4 +4,4 @@ require_relative "config/environment"
 
 require "roda/plugins/sprockets_task"
 
-Roda::RodaPlugins::Sprockets::Task.define!(IndieWebEndpointsApp)
+Roda::RodaPlugins::Sprockets::Task.define!(App)

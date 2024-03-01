@@ -9,7 +9,7 @@ IRB.conf[:SAVE_HISTORY] = 1000
 IRB.conf[:USE_AUTOCOMPLETE] = false
 IRB.conf[:USE_PAGER] = false
 
-prompt = "#{Rainbow("IndieWebEndpointsApp").orange} (#{Rainbow(ENV.fetch("RACK_ENV")).blue}) (%m) %03n:%i"
+prompt = "#{Rainbow("IndieWebEndpoints").orange} (#{Rainbow(ENV.fetch("RACK_ENV")).blue}) (%m) %03n:%i"
 
 IRB.conf[:PROMPT][:RODA] = {
   PROMPT_I: "#{prompt}> ",

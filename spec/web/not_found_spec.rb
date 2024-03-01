@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe IndieWebEndpointsApp do
+RSpec.describe App do
   subject(:response) { last_response }
 
   describe "GET /foo" do

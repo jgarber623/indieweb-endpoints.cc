@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class IndieWebEndpointsApp < Roda
+class App < Roda
   class InvalidURIError < StandardError; end
 
   # Routing plugins
