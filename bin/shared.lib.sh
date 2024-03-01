@@ -25,10 +25,10 @@ check_for_docker() {
 }
 
 run_within_docker() {
-  FILE="/proc/1/sched"
+  FILE="/.dockerenv"
   BIN_DIR=$(dirname -- "${0}")
 
-  if ! [ -r "${FILE}" ] || ! grep -q "docker-init" "${FILE}"; then
+  if ! [ -f "${FILE}" ]; then
     log "🚨 The command \"${0}\" must be executed within the running container:"
     log ""
     log "   ${BIN_DIR}/exec ${0} ${@}"
