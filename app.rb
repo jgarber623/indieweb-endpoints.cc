@@ -55,7 +55,12 @@ class App < Roda
   configure :production do
     use Rack::Deflater
     use Rack::HostRedirect, [ENV.fetch("HOSTNAME", nil), "www.indieweb-endpoints.cc"].compact => "indieweb-endpoints.cc"
-    use Rack::Static, urls: ["/assets"], root: "public"
+    use Rack::Static,
+        urls: ["/assets"],
+        root: "public",
+        header_rules: [
+          [:all, { "max-age": "31536000, immutable" }]
+        ]
   end
   # :nocov:
 
