@@ -11,7 +11,7 @@ gem "rack-host-redirect"
 gem "rake"
 gem "roda"
 gem "roda-sprockets"
-gem "sassc"
+gem "sprockets-sass_embedded"
 gem "tilt"
 
 group :development do

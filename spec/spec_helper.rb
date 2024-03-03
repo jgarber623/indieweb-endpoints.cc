@@ -30,7 +30,7 @@ RSpec.configure do |config|
   config.include Rack::Test::Methods
 
   def app
-    IndieWebEndpointsApp.freeze.app
+    App.freeze.app
   end
 
   # rspec-expectations config goes here. You can use an alternate

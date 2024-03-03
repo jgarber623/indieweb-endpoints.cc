@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class IndieWebEndpointsApp < Roda
+class App < Roda
   class InvalidURIError < StandardError; end
 
   # Routing plugins
@@ -22,22 +22,16 @@ class IndieWebEndpointsApp < Roda
   plugin :content_security_policy do |csp|
     csp.base_uri :self
     csp.block_all_mixed_content
-    csp.child_src :none
-    csp.default_src :self
+    csp.default_src :none
     csp.font_src :self, "https://fonts.gstatic.com"
     csp.form_action :self
     csp.frame_ancestors :none
-    csp.frame_src :none
     csp.img_src :self
-    csp.media_src :self
-    csp.object_src :none
     csp.script_src :self
     csp.style_src :self, "https://fonts.googleapis.com"
-    csp.worker_src :none
   end
 
   plugin :default_headers,
-         "Content-Type" => "text/html; charset=utf-8",
          "Referrer-Policy" => "no-referrer-when-downgrade",
          "X-Frame-Options" => "DENY",
          "X-XSS-Protection" => "0"
@@ -48,19 +42,26 @@ class IndieWebEndpointsApp < Roda
 
   # Third-party plugins
   plugin :sprockets,
-         css_compressor: :sassc,
+         css_compressor: :sass_embedded,
          debug: false,
          precompile: ["application.css", "apple-touch-icon-180x180.png", "icon.png"]
 
   configure do
     use Rack::CommonLogger
+    use Rack::ContentType
+    use Rack::Deflater
+    use Rack::ETag
   end
 
   # :nocov:
   configure :production do
-    use Rack::Deflater
     use Rack::HostRedirect, [ENV.fetch("HOSTNAME", nil), "www.indieweb-endpoints.cc"].compact => "indieweb-endpoints.cc"
-    use Rack::Static, urls: ["/assets"], root: "public"
+    use Rack::Static,
+        urls: ["/assets"],
+        root: "public",
+        header_rules: [
+          [:all, { "cache-control": "max-age=31536000, immutable" }]
+        ]
   end
   # :nocov:
 

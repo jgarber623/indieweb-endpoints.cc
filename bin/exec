@@ -66,7 +66,7 @@ done
 shift $((OPTIND-1)) # Remove parsed options and args from $@ list.
 
 # Set default command if none is provided.
-COMMAND="${@:-/usr/bin/env sh}"
+COMMAND="${@:-/usr/bin/env bash}"
 
 check_for_docker
 

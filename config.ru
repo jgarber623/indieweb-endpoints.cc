@@ -2,4 +2,6 @@
 
 require_relative "config/environment"
 
-run IndieWebEndpointsApp.freeze.app
+RubyVM::YJIT.enable
+
+run App.freeze.app

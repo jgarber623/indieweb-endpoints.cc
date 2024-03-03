@@ -1,10 +1,8 @@
-FROM ruby:3.2.2-alpine3.19
+FROM ruby:3.3.0-slim-bookworm
 
 EXPOSE 8080
 
-# Silence Ruby deprecation warnings and enable YJIT.
-ENV RUBYOPT="-W:no-deprecated --yjit"
-
+# Configure application environment.
 ENV RACK_ENV=production \
     BUNDLE_DEPLOYMENT=1 \
     BUNDLE_WITHOUT=development:test
@@ -12,20 +10,23 @@ ENV RACK_ENV=production \
 WORKDIR /usr/src/app
 
 # Install system dependencies.
-RUN apk add --no-cache --update g++ make
+RUN apt update && \
+    apt install --no-install-recommends --yes \
+      g++ \
+      libjemalloc2 \
+      make \
+      && \
+    rm -rf /var/lib/apt/lists/*
 
-# Alpine Linux does not have a glibc-compatible library installed which can
-# cause problems with running gems like Nokogiri.
-#
-# See: https://github.com/sparklemotion/nokogiri/issues/2430
-RUN apk add --no-cache --update gcompat
+# Configure memory allocation.
+ENV LD_PRELOAD="/usr/lib/libjemalloc.so.2"
 
 COPY .ruby-version Gemfile Gemfile.lock ./
 
 RUN bundle install \
     && bundle clean --force \
-    && rm -rf vendor/bundle/ruby/3.2.0/cache/*.gem \
-    && find vendor/bundle/ruby/3.2.0/gems/ \( -name "*.c" -o -name "*.o" \) -delete
+    && rm -rf vendor/bundle/ruby/3.3.0/cache/*.gem \
+    && find vendor/bundle/ruby/3.3.0/gems/ \( -name "*.c" -o -name "*.o" \) -delete
 
 COPY . .
 
