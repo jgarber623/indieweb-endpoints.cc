@@ -19,24 +19,25 @@ concurrency:
 jobs:
   merge-main:
     name: Merge main branch
-    if: ${{ github.event.inputs.merge-main == 'true' }}
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: Merge main branch and push changes
+        if: ${{ github.event.inputs.merge-main == 'true' }}
         run: |
           git fetch origin main
           git merge origin/main
           git push
   ci:
     name: CI
-    if: ${{ always() }}
     needs: merge-main
     uses: ./.github/workflows/ci.yml
   build:
     name: Build
     permissions:
-      contents: write
+      contents: read
       id-token: write
       packages: write
     needs: ci
