@@ -32,7 +32,6 @@ class App < Roda
   end
 
   plugin :default_headers,
-         "Content-Type" => "text/html; charset=utf-8",
          "Referrer-Policy" => "no-referrer-when-downgrade",
          "X-Frame-Options" => "DENY",
          "X-XSS-Protection" => "0"
@@ -49,11 +48,13 @@ class App < Roda
 
   configure do
     use Rack::CommonLogger
+    use Rack::ContentType
+    use Rack::Deflater
+    use Rack::ETag
   end
 
   # :nocov:
   configure :production do
-    use Rack::Deflater
     use Rack::HostRedirect, [ENV.fetch("HOSTNAME", nil), "www.indieweb-endpoints.cc"].compact => "indieweb-endpoints.cc"
     use Rack::Static,
         urls: ["/assets"],
