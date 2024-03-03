@@ -4,10 +4,6 @@ ruby file: ".ruby-version"
 
 source "https://rubygems.org"
 
-# Contend with Alpine
-gem "google-protobuf", force_ruby_platform: true
-gem "sass-embedded", force_ruby_platform: true
-
 gem "indieweb-endpoints"
 gem "puma"
 gem "rack"
