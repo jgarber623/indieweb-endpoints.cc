@@ -19,7 +19,7 @@ RUN apt update && \
     rm -rf /var/lib/apt/lists/*
 
 # Configure memory allocation.
-ENV LD_PRELOAD="/usr/lib/libjemalloc.so.2"
+ENV LD_PRELOAD="/usr/lib/x86_64-linux-gnu/libjemalloc.so.2"
 
 COPY .ruby-version Gemfile Gemfile.lock ./
 
