@@ -60,7 +60,7 @@ class App < Roda
         urls: ["/assets"],
         root: "public",
         header_rules: [
-          [:all, { "max-age": "31536000, immutable" }]
+          [:all, { "cache-control": "max-age=31536000, immutable" }]
         ]
   end
   # :nocov:
