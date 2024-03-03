@@ -22,18 +22,13 @@ class App < Roda
   plugin :content_security_policy do |csp|
     csp.base_uri :self
     csp.block_all_mixed_content
-    csp.child_src :none
-    csp.default_src :self
+    csp.default_src :none
     csp.font_src :self, "https://fonts.gstatic.com"
     csp.form_action :self
     csp.frame_ancestors :none
-    csp.frame_src :none
     csp.img_src :self
-    csp.media_src :self
-    csp.object_src :none
     csp.script_src :self
     csp.style_src :self, "https://fonts.googleapis.com"
-    csp.worker_src :none
   end
 
   plugin :default_headers,
