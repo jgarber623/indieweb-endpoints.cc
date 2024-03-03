@@ -1,42 +1,17 @@
 name: CI
 
 on:
-  pull_request:
-    branches: [main]
   workflow_call:
   workflow_dispatch:
 
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  audit:
-    name: Audit
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: ruby/setup-ruby@v1
-        with:
-          bundler-cache: true
-      - name: Run bundler-audit
-        run: bundle exec bundle-audit check --update
-  lint:
-    name: Lint
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: ruby/setup-ruby@v1
-        with:
-          bundler-cache: true
-      - name: Run RuboCop
-        run: bundle exec rubocop
-  test:
-    name: Test
-    needs:
-      - audit
-      - lint
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: ruby/setup-ruby@v1
-        with:
-          bundler-cache: true
-      - name: Run RSpec
-        run: bundle exec rspec
+  audit-ruby:
+    uses: "./.github/workflows/audit-ruby.yml"
+  lint-ruby:
+    uses: "./.github/workflows/lint-ruby.yml"
+  test-ruby:
+    uses: "./.github/workflows/test-ruby.yml"

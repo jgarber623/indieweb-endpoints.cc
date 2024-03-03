@@ -1,0 +1,32 @@
+name: Test Ruby code
+
+on:
+  pull_request:
+    paths-ignore:
+      - ".devcontainer/**"
+      - "**/*.md"
+      - "bin/**"
+  workflow_call:
+
+jobs:
+  test-ruby:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - name: Run RSpec test suite
+        run: bundle exec rspec --force-color --format progress --format html --out tmp/rspec.html
+      - name: Upload test artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rspec
+          path: |
+            tmp/rspec.html
+      - name: Upload coverage artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage
+          path: coverage/

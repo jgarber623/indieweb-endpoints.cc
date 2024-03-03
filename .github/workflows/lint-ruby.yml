@@ -1,0 +1,27 @@
+name: Lint Ruby code
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/lint-ruby.yml"
+      - ".irbrc"
+      - ".rubocop*.yml"
+      - ".ruby-version"
+      - ".simplecov"
+      - "**/*.rake"
+      - "**/*.rb"
+      - "config.ru"
+      - "Gemfile*"
+      - "Rakefile"
+  workflow_call:
+
+jobs:
+  lint-ruby:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - name: Run RuboCop checks
+        run: bundle exec rubocop --color
