@@ -1,9 +1,6 @@
-FROM ruby:3.3.0-alpine3.19
+FROM ruby:3.3.0-slim-bookworm
 
 EXPOSE 8080
-
-# Configure memory allocation.
-ENV LD_PRELOAD="/usr/lib/libjemalloc.so.2"
 
 # Configure application environment.
 ENV RACK_ENV=production \
@@ -13,16 +10,16 @@ ENV RACK_ENV=production \
 WORKDIR /usr/src/app
 
 # Install system dependencies.
-RUN apk add --no-cache --update \
+RUN apt update && \
+    apt install --no-install-recommends --yes \
       g++ \
-      jemalloc \
-      make
+      libjemalloc2 \
+      make \
+      && \
+    rm -rf /var/lib/apt/lists/*
 
-# Alpine Linux does not have a glibc-compatible library installed which can
-# cause problems with running gems like Nokogiri.
-#
-# See: https://github.com/sparklemotion/nokogiri/issues/2430
-RUN apk add --no-cache --update gcompat
+# Configure memory allocation.
+ENV LD_PRELOAD="/usr/lib/libjemalloc.so.2"
 
 COPY .ruby-version Gemfile Gemfile.lock ./
 
