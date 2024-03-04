@@ -1,0 +1,11 @@
+{
+  "private": true,
+  "name": "indieweb-endpoints.cc",
+  "type": "module",
+  "scripts": {
+    "lint": "stylelint ./assets/**/*.scss"
+  },
+  "devDependencies": {
+    "@jgarber/stylelint-config-scss": "^3.0.0"
+  }
+}
