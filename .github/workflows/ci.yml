@@ -11,6 +11,8 @@ concurrency:
 jobs:
   audit-ruby:
     uses: "./.github/workflows/audit-ruby.yml"
+  lint-css:
+    uses: "./.github/workflows/lint-ruby.yml"
   lint-ruby:
     uses: "./.github/workflows/lint-ruby.yml"
   test-ruby:

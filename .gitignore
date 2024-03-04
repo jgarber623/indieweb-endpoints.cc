@@ -2,3 +2,4 @@
 .rdbg_history
 .rubocop-https?--*
 /coverage/
+/node_modules/

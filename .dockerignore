@@ -2,6 +2,7 @@
 .DS_Store
 .editorconfig
 .git*
+.nvmrc
 .rspec
 .rubocop*
 .simplecov
@@ -9,6 +10,8 @@
 /.devcontainer/
 /bin/
 /coverage/
+/node_modules/
 /spec/
 Dockerfile
 LICENSE
+package*.json
