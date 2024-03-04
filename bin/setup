@@ -10,8 +10,11 @@ SCRIPT_DIR=$(cd -- "${DIRNAME}" > /dev/null 2>&1 && pwd)
 run_within_docker $@
 
 log "💎 Installing Ruby gems..."
-bundle check || bundle install --jobs=4 --retry=3
+bin/bundle check || bin/bundle install --jobs=4 --retry=3
 
-log ''
-log '✨ Done!'
-log ''
+log "📦 Installing JavaScript dependencies..."
+npm install
+
+log ""
+log "✨ Done!"
+log ""
