@@ -20,11 +20,19 @@ WORKDIR /workspace
 # Install system dependencies.
 RUN apt update && \
     apt install --no-install-recommends --yes \
+      curl \
       g++ \
       git \
       less \
       libjemalloc2 \
       make \
+      && \
+    rm -rf /var/lib/apt/lists/*
+
+# Install Node.js v20.x
+RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
+    apt install --no-install-recommends --yes \
+      nodejs \
       && \
     rm -rf /var/lib/apt/lists/*
 

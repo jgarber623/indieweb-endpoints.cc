@@ -13,6 +13,8 @@ services:
     volumes:
       - ..:/workspace:cached
       - bundle-cache:/usr/local/bundle
+      - node_modules-cache:/workspace/node_modules
 
 volumes:
   bundle-cache:
+  node_modules-cache:
