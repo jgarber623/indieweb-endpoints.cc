@@ -31,6 +31,8 @@ class App < Roda
     csp.style_src :self, "https://fonts.googleapis.com"
   end
 
+  plugin :permissions_policy, default: :none
+
   plugin :default_headers,
          "Referrer-Policy" => "no-referrer-when-downgrade",
          "X-Frame-Options" => "DENY",
