@@ -1,16 +1,73 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/ruby
 {
-  "name": "indieweb-endpoints-cc",
-  "features": {},
+  "name": "indieweb-endpoints.cc",
+  // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+  "image": "ruby:3.3.0-slim-bookworm",
+
+  // Features to add to the dev container. More info: https://containers.dev/features.
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "installOhMyZsh": false,
+      "installOhMyZshConfig": false
+    },
+    "ghcr.io/devcontainers/features/node:1": {},
+    "ghcr.io/devcontainers-contrib/features/apt-packages:1": {
+      "packages": "curl g++ git libjemalloc2 make"
+    },
+    "ghcr.io/devcontainers-contrib/features/bash-command:1": {
+      "comamnd": "gem install --no-document rainbow rerun"
+    }
+  },
+
+  // Container environment variables.
+  "containerEnv": {
+    // Configure editors and pagers.
+    "EDITOR": "vi",
+    "VISUAL": "code --wait",
+    "PAGER": "less",
+    "LESS": "-FMR",
+
+    // Configure memory allocation.
+    "LD_PRELOAD": "/usr/lib/aarch64-linux-gnu/libjemalloc.so.2",
+
+    // Configure application environment.
+    "RACK_ENV": "development",
+
+    // Configure ruby/debug gem.
+    "RUBY_DEBUG_HISTORY_FILE": "${containerWorkspaceFolder}/.rdbg_history",
+    "RUBY_DEBUG_SAVE_HISTORY": "1000",
+
+    // Configure npm's cache folder to a named volume.
+    "NPM_CONFIG_CACHE": "/usr/local/npm"
+  },
+
+  // Mount points to set up when creating the container. https://docs.docker.com/storage/bind-mounts/
+  "mounts": [
+    "type=volume,source=bundle-cache,target=/usr/local/bundle",
+    "type=volume,source=npm-cache,target=/usr/local/npm",
+    "type=volume,source=node_modules-cache,target=${containerWorkspaceFolder}/node_modules"
+  ],
+
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  "forwardPorts": [8080],
+
+  // Use 'postCreateCommand' to run commands after the container is created.
+  "postCreateCommand": "bin/setup",
+
+  // Configure tool-specific properties.
   "customizations": {
     "vscode": {
       "extensions": [
         "EditorConfig.EditorConfig",
         "Shopify.ruby-lsp"
-      ]
+      ],
+      "settings": {
+        "rubyLsp.rubyVersionManager": "none"
+      }
     }
-  },
-  "workspaceFolder": "/workspace",
-  "dockerComposeFile": "docker-compose.yml",
-  "service": "app",
-  "postCreateCommand": "bin/setup"
+  }
+
+  // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+  // "remoteUser": "root"
 }
