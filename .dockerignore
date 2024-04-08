@@ -2,7 +2,6 @@
 .DS_Store
 .editorconfig
 .git*
-.nvmrc
 .rspec
 .rubocop*
 .simplecov
