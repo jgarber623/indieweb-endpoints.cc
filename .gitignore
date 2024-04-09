@@ -2,5 +2,6 @@
 .irb_history
 .rdbg_history
 .rubocop-https?--*
+/.ruby-lsp/
 /coverage/
 /node_modules/
