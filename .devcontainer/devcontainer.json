@@ -44,9 +44,9 @@
 
   // Mount points to set up when creating the container. https://docs.docker.com/storage/bind-mounts/
   "mounts": [
-    "type=volume,source=bundle-cache,target=/usr/local/bundle",
-    "type=volume,source=npm-cache,target=/usr/local/npm",
-    "type=volume,source=node_modules-cache,target=${containerWorkspaceFolder}/node_modules"
+    "type=volume,source=${containerWorkspaceFolderBasename}-bundle-cache,target=/usr/local/bundle",
+    "type=volume,source=${containerWorkspaceFolderBasename}-npm-cache,target=/usr/local/npm",
+    "type=volume,source=${containerWorkspaceFolderBasename}-node_modules-cache,target=${containerWorkspaceFolder}/node_modules"
   ],
 
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
