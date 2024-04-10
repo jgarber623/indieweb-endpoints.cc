@@ -79,6 +79,7 @@ jobs:
             gcr.io/${{ env.GCP_PROJECT }}/${{ github.repository }}:latest
             ghcr.io/${{ github.repository }}:${{ steps.vars.outputs.short_sha }}
             ghcr.io/${{ github.repository }}:latest
+          target: production
   deploy:
     name: Deploy
     permissions:
