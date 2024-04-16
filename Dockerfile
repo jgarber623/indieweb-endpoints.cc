@@ -6,9 +6,9 @@ FROM ruby:3.3.0-slim-bookworm AS base-stage
 EXPOSE 8080
 
 # Configure application environment.
-ENV RACK_ENV=production \
-    BUNDLE_DEPLOYMENT=1 \
-    BUNDLE_WITHOUT=development:test
+ENV RACK_ENV="production" \
+    BUNDLE_DEPLOYMENT="1" \
+    BUNDLE_WITHOUT="development:test"
 
 WORKDIR /usr/src/app
 
