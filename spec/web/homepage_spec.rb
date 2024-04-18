@@ -18,26 +18,31 @@ RSpec.describe App do
   end
 
   describe "POST /" do
-    let(:message) { "The requested method is not allowed" }
+    context "when no url param" do
+      let(:request) { post "/" }
 
-    context "when requesting text/html" do
-      before do
-        header "Accept", "text/html"
-        post "/"
-      end
-
-      it { is_expected.to be_method_not_allowed }
-      its(:body) { is_expected.to eq(message) }
+      include_examples "a bad request"
     end
 
-    context "when requesting application/json" do
+    context "when invalid url param protocol" do
+      let(:request) { post "/", url: "ftp://example.com" }
+
+      include_examples "a bad request"
+    end
+
+    context "when invalid url param" do
+      let(:request) { post "/", url: "https://example.com<script>" }
+
+      include_examples "a bad request"
+    end
+
+    context "when valid url param" do
       before do
-        header "Accept", "application/json"
-        post "/"
+        header "Accept", "text/html"
+        post "/", url: "https://example.com"
       end
 
-      it { is_expected.to be_method_not_allowed }
-      its(:body) { is_expected.to eq({ message: message }.to_json) }
+      it { is_expected.to be_redirect }
     end
   end
 end
