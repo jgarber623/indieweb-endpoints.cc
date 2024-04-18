@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative "models/refined_uri"
+
 class App < Roda
   class InvalidURIError < StandardError; end
 
@@ -71,24 +73,39 @@ class App < Roda
     r.public
     r.sprockets unless opts[:environment] == "production"
 
-    r.root do
-      response.cache_control public: true
+    r.on "" do
+      # GET /
+      r.get do
+        response.cache_control public: true
 
-      view :index
+        view :index
+      end
+
+      # POST /
+      r.post do
+        query = RefinedURI.new(r.params["url"])
+
+        raise InvalidURIError if query.invalid?
+
+        r.redirect "/u/#{query.url}"
+      rescue InvalidURIError, URI::InvalidURIError
+        r.halt 400
+      end
     end
 
-    r.get "search" do
-      url = r.params["url"].to_s
+    # GET /u/https://example.com
+    r.get "u", /(#{URI::DEFAULT_PARSER.make_regexp(["http", "https"])})/io do |url|
+      query = RefinedURI.new(url)
 
-      raise InvalidURIError unless url.match?(URI::DEFAULT_PARSER.make_regexp(["http", "https"]))
+      raise InvalidURIError if query.invalid?
 
-      client = IndieWeb::Endpoints::Client.new(url)
+      client = IndieWeb::Endpoints::Client.new(query.url)
       endpoints = client.endpoints
 
       r.json { endpoints.to_json }
 
       view :search, locals: { canonical_url: client.response.uri.to_s, endpoints: endpoints }
-    rescue InvalidURIError, IndieWeb::Endpoints::InvalidURIError
+    rescue InvalidURIError, URI::InvalidURIError, IndieWeb::Endpoints::InvalidURIError
       r.halt 400
     rescue IndieWeb::Endpoints::HttpError, IndieWeb::Endpoints::SSLError
       r.halt 408

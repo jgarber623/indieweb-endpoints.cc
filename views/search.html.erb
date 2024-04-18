@@ -41,6 +41,6 @@
     Use command line utilities like <a href="https://curl.haxx.se">curl</a> or <a href="https://www.gnu.org/software/wget/">Wget</a> to directly query IndieWeb Endpoints.
   </figcaption>
 
-  <kbd>curl --header 'Accept: application/json' --silent 'https://indieweb-endpoints.cc/search?url=<%= canonical_url %>'</kbd>
-  <kbd>wget --header 'Accept: application/json' --quiet -O - 'https://indieweb-endpoints.cc/search?url=<%= canonical_url %>'</kbd>
+  <kbd>curl --header "Accept: application/json" --silent "https://indieweb-endpoints.cc/u/<%= canonical_url %>"</kbd>
+  <kbd>wget --header "Accept: application/json" --quiet -O - "https://indieweb-endpoints.cc/u/<%= canonical_url %>"</kbd>
 </figure>

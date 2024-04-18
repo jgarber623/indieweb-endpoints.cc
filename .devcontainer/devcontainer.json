@@ -16,7 +16,7 @@
       "packages": "curl g++ git libjemalloc2 make"
     },
     "ghcr.io/devcontainers-contrib/features/bash-command:1": {
-      "comamnd": "gem install --no-document rainbow rerun"
+      "command": "gem install --no-document rainbow rerun"
     }
   },
 
@@ -63,7 +63,9 @@
         "Shopify.ruby-lsp"
       ],
       "settings": {
-        "rubyLsp.rubyVersionManager": "none"
+        "rubyLsp.rubyVersionManager": {
+          "identifier": "none"
+        }
       }
     }
   }
