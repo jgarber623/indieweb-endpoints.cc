@@ -70,6 +70,7 @@
     background: var(--white);
     display: block;
     margin: var(--spacing-small) 0;
+    overflow-x: scroll;
     padding: var(--spacing-small);
   }
 }
