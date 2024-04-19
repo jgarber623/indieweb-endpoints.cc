@@ -6,33 +6,14 @@ on:
   push:
     branches: [production]
   workflow_dispatch:
-    inputs:
-      merge-main:
-        description: Merge main branch
-        required: false
-        type: boolean
 
 concurrency:
   group: deploy-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  merge-main:
-    name: Merge main branch
-    permissions:
-      contents: write
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Merge main branch and push changes
-        if: ${{ github.event.inputs.merge-main == 'true' }}
-        run: |
-          git fetch origin main
-          git merge origin/main
-          git push
   ci:
     name: CI
-    needs: merge-main
     uses: ./.github/workflows/ci.yml
   build:
     name: Build
