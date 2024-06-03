@@ -81,7 +81,7 @@ GEM
       io-console (~> 0.5)
     rexml (3.2.8)
       strscan (>= 3.0.9)
-    roda (3.79.0)
+    roda (3.80.0)
       rack
     roda-sprockets (2.0.0)
       roda (~> 3)
