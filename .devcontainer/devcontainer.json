@@ -3,7 +3,7 @@
 {
   "name": "indieweb-endpoints.cc",
   // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-  "image": "ruby:3.3.1-slim-bookworm",
+  "image": "ruby:3.3.2-slim-bookworm",
 
   // Features to add to the dev container. More info: https://containers.dev/features.
   "features": {
