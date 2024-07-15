@@ -52,4 +52,4 @@ IndieWeb Endpoints is written and maintained by [Jason Garber](https://sixtwothr
 
 ## License
 
-IndieWeb Endpoints is freely available under the [MIT License](https://opensource.org/licenses/MIT). Use it, learn from it, fork it, improve it, change it, tailor it to your needs.
+indieweb-endpoints.cc is freely available under the [MIT License](https://opensource.org/licenses/MIT).
