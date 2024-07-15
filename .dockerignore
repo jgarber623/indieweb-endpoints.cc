@@ -9,7 +9,6 @@
 /.devcontainer/
 /bin/
 /coverage/
-/node_modules/
 /spec/
 Dockerfile
 LICENSE
