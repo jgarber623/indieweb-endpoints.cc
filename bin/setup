@@ -11,9 +11,6 @@ run_within_docker $@
 log "💎 Installing Ruby gems..."
 bin/bundle check || bin/bundle install --jobs=4 --retry=3
 
-log "📦 Installing JavaScript dependencies..."
-npm install
-
 log ""
 log "✨ Done!"
 log ""
