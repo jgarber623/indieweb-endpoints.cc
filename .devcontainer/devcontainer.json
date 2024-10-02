@@ -46,6 +46,9 @@
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
   "forwardPorts": [8080],
 
+  // An array of Docker CLI arguments that should be used when running the container.
+  "runArgs": ["--name", "indieweb-endpoints.cc"],
+
   // Use 'postCreateCommand' to run commands after the container is created.
   "postCreateCommand": "bin/setup",
 
