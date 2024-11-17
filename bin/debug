@@ -6,7 +6,5 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 . "${SCRIPT_DIR}"/shared.lib.sh
 
-run_within_docker $@
-
 log "🐛 Connecting to remote debugging session..."
 bin/bundle exec rdbg --attach

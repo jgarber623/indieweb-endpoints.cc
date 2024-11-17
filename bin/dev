@@ -6,7 +6,5 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 . "${SCRIPT_DIR}"/shared.lib.sh
 
-run_within_docker $@
-
 log "🏃 Running the application..."
 rerun --name indieweb-endpoints.cc -- puma --config config/puma.rb

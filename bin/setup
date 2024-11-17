@@ -6,8 +6,6 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 . "${SCRIPT_DIR}"/shared.lib.sh
 
-run_within_docker $@
-
 log "💎 Installing Ruby gems..."
 bin/bundle check || bin/bundle install --jobs=4 --retry=3
 
