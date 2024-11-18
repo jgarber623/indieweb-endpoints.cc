@@ -57,12 +57,7 @@
     "vscode": {
       "extensions": [
         "Shopify.ruby-lsp"
-      ],
-      "settings": {
-        "rubyLsp.rubyVersionManager": {
-          "identifier": "none"
-        }
-      }
+      ]
     }
   }
 
