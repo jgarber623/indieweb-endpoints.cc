@@ -121,7 +121,7 @@ GEM
     reline (0.6.0)
       io-console (~> 0.5)
     rexml (3.4.0)
-    roda (3.87.0)
+    roda (3.88.0)
       rack
     roda-sprockets (2.0.0)
       roda (~> 3)
