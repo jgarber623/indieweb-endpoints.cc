@@ -24,4 +24,4 @@ jobs:
         with:
           bundler-cache: true
       - name: Run RuboCop checks
-        run: bundle exec rubocop --color
+        run: bin/rubocop --color

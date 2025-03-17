@@ -17,7 +17,7 @@ jobs:
         with:
           bundler-cache: true
       - name: Run RSpec test suite
-        run: bundle exec rspec --force-color --format progress --format html --out tmp/rspec.html
+        run: bin/rspec --force-color --format progress --format html --out tmp/rspec.html
       - name: Upload test artifacts
         if: always()
         uses: actions/upload-artifact@v4
