@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+require "bundler/setup"
 require "bundler/audit/cli"
 
 ARGV.push("--config", "config/bundler-audit.yml") if ARGV.empty? || ARGV.include?("check")
