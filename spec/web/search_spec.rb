@@ -79,7 +79,7 @@ RSpec.describe App do
             microsub: nil,
             redirect_uri: nil,
             token_endpoint: nil,
-            webmention: "https://example.com/webmention"
+            webmention: "https://example.com/webmention",
           }
         end
 

@@ -16,7 +16,7 @@ IRB.conf[:PROMPT][:RODA] = {
   PROMPT_N: "#{prompt}> ",
   PROMPT_S: "#{prompt}%l ",
   PROMPT_C: "#{prompt}* ",
-  RETURN: "=> %s\n"
+  RETURN: "=> %s\n",
 }
 
 IRB.conf[:PROMPT_MODE] = :RODA
