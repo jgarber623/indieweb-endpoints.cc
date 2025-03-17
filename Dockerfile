@@ -1,7 +1,7 @@
 ################################################################################
 # Base Stage
 ################################################################################
-FROM ruby:3.3.6-slim-bookworm AS base-stage
+FROM ruby:3.4.2-slim-bookworm AS base
 
 EXPOSE 8080
 
@@ -25,7 +25,7 @@ ENV LD_PRELOAD="/usr/lib/x86_64-linux-gnu/libjemalloc.so.2"
 ################################################################################
 # Build Stage
 ################################################################################
-FROM base-stage AS build-stage
+FROM base AS build
 
 # Install system dependencies.
 RUN apt update && \
@@ -47,10 +47,10 @@ COPY . .
 RUN bundle exec rake assets:precompile
 
 ################################################################################
-# Production
+# Production Stage
 ################################################################################
-FROM base-stage AS production
+FROM base AS production
 
-COPY --from=build-stage /usr/src/app ./
+COPY --from=build "${WORKDIR}" "${WORKDIR}"
 
 CMD ["bundle", "exec", "puma", "--config", "config/puma.rb"]
