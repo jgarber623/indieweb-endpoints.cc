@@ -16,11 +16,9 @@ WORKDIR /usr/src/app
 RUN apt update && \
     apt install --no-install-recommends --yes \
       libjemalloc2 \
+      libyaml-dev \
       && \
-    rm -rf /var/lib/apt/lists/*
-
-# Configure memory allocation.
-ENV LD_PRELOAD="/usr/lib/x86_64-linux-gnu/libjemalloc.so.2"
+    rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 ################################################################################
 # Build Stage
@@ -53,4 +51,8 @@ FROM base AS production
 
 COPY --from=build "${WORKDIR}" "${WORKDIR}"
 
-CMD ["bundle", "exec", "puma", "--config", "config/puma.rb"]
+RUN chmod +x docker-entrypoint.sh
+
+ENTRYPOINT ["./docker-entrypoint.sh"]
+
+CMD ["bundle", "exec", "puma"]

@@ -12,7 +12,7 @@
       "installOhMyZshConfig": false
     },
     "ghcr.io/devcontainers-contrib/features/apt-packages:1": {
-      "packages": "curl g++ git libjemalloc2 make"
+      "packages": "curl g++ git libyaml-dev make"
     },
     "ghcr.io/devcontainers-contrib/features/bash-command:1": {
       "command": "gem install --no-document rainbow rerun"
@@ -26,9 +26,6 @@
     "VISUAL": "code --wait",
     "PAGER": "less",
     "LESS": "-FMR",
-
-    // Configure memory allocation.
-    "LD_PRELOAD": "/usr/lib/aarch64-linux-gnu/libjemalloc.so.2",
 
     // Configure application environment.
     "RACK_ENV": "development",
@@ -50,7 +47,7 @@
   "runArgs": ["--name", "indieweb-endpoints.cc"],
 
   // Use 'postCreateCommand' to run commands after the container is created.
-  "postCreateCommand": "bin/setup",
+  "postCreateCommand": ".devcontainer/setup.sh",
 
   // Configure tool-specific properties.
   "customizations": {
