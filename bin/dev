@@ -2,9 +2,4 @@
 
 set -e
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-
-. "${SCRIPT_DIR}"/shared.lib.sh
-
-log "🏃 Running the application..."
-rerun --name indieweb-endpoints.cc -- puma --config config/puma.rb
+rerun --name indieweb-endpoints.cc -- puma

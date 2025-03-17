@@ -1,10 +1,9 @@
-#!/usr/bin/env bash
+#!/usr/bin/env ruby
+# frozen_string_literal: true
 
-set -e
+require "rubygems"
+require "bundler/setup"
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ARGV.unshift("--attach")
 
-. "${SCRIPT_DIR}"/shared.lib.sh
-
-log "🐛 Connecting to remote debugging session..."
-bin/bundle exec rdbg --attach
+load Gem.bin_path("rdbg", "rdbg")
